@@ -145,6 +145,7 @@ var UCSC_locations = {
     l28: {Location:"J Bask Aud",
         center: {lat: 37.000413, lng: -122.062368},
         population: 0,
+        classes: {}
     },
     l29: {Location:"BiomedSci",
         center: {lat: 36.999999, lng: -122.061097},

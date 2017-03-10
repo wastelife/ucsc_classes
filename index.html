@@ -4,16 +4,17 @@
     <title>UCSC Courses and Events</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/class_stylesheet.css" media="screen" />
-    <script src="js/location_data.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
-    <!--<script type="text/javascript" src="https://raw.githubusercontent.com/77ahh/CE263_Final/master/all_data_3.json"></script>  -->
+    <link rel="stylesheet" type="text/css" href="stylesheet/style123.css" media="screen" />
+    <script src="script/location_data.js"></script>
+    <script src="script/jquery-3.1.1.js"></script>
 
   </head>
 
   <body>
+
     <div id="controls" class="nicebox">
       <div>
+      <button class="button button1" onclick="myFunction()">Green</button>
       <select id="courses-variable">
         <option value="HAHAHAHA" selected="selected">Select a day</option>
         <option value= "">All days </option>
@@ -58,6 +59,28 @@
         <option value=21>09:00PM</option>
         <option value=22>10:00PM</option>
       </select>
+      <style>
+      .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 12px;
+          margin: 4px 2px;
+          cursor: pointer;
+      }
+      .button1 {
+          background-color: white;
+          color: black;
+          border: 2px solid #4CAF50;
+      }
+
+    </style>
+
+
       </div>
     </div>
     <div id="map"></div>
@@ -71,9 +94,10 @@
      $.ajaxSetup({
         async: false
     });
-//     $.getJSON("events_data.json", function(json) {
-//     console.log(json);
-//     });
+
+     $.getJSON("data/events_data.json", function(json) {
+     console.log(json);
+     });
 
     //Create the map
     function initMap() {
@@ -87,13 +111,7 @@
     //If "courses-variable" changes, delete all circles and create new ones
        google.maps.event.addDomListener(document.getElementById("courses-variable"), 'change', function() {
        dayValue = document.getElementById("courses-variable").value;
-       for(var ii in UCSC_locations){
-           UCSC_locations[ii].population = 0;
-           UCSC_locations[location].classes = {}
-       }
-       for(var i in window.allCircles) {
-            window.allCircles[i].setMap(null);
-       }
+       clearData();
        getData(dayValue,startTime,endTime);
        if (map.getZoom() === 15) {
            createCircle(70)
@@ -113,13 +131,7 @@
     //If "start-time" changes, delete all circles and create new ones
        google.maps.event.addDomListener(document.getElementById("start-time"), 'change', function() {
        startTime = document.getElementById("start-time").value;
-       for(var ii in UCSC_locations){
-           UCSC_locations[ii].population = 0;
-           UCSC_locations[location].classes = {}
-       }
-       for(var i in window.allCircles) {
-            window.allCircles[i].setMap(null);
-       }
+       clearData();
        getData(dayValue,startTime,endTime);
        if (map.getZoom() === 15) {
            createCircle(70)
@@ -137,13 +149,7 @@
 
        google.maps.event.addDomListener(document.getElementById("end-time"), 'change', function() {
        endTime = document.getElementById("end-time").value;
-       for(var ii in UCSC_locations){
-           UCSC_locations[ii].population = 0
-           UCSC_locations[location].classes = {};
-       }
-       for(var i in window.allCircles) {
-            window.allCircles[i].setMap(null);
-       }
+       clearData();
        getData(dayValue,startTime,endTime);
        if (map.getZoom() === 15) {
            createCircle(70)
@@ -260,8 +266,8 @@
                     radius: rr,
                     information: pp,
                     infowindow: new google.maps.InfoWindow({
-//                      content: JSON.stringify(UCSC_locations[location].classes),
-                        content: JSON.stringify(pp),
+                        content: JSON.stringify(UCSC_locations[location].classes),
+//                        content: JSON.stringify(UCSC_locations[location].Location),
                         position: UCSC_locations[location].center
                       })
                 });
@@ -269,23 +275,25 @@
                 window.allCircles.push(locationCircle);
 
                 google.maps.event.addListener(locationCircle, 'mouseover', function () {
-                    this.infowindow.open(map,this)
-                });
+                    this.infowindow.open(map,this);
+                     });
+//                locationCircle.style.display="block";
+
+
 
                 google.maps.event.addListener(locationCircle, 'mouseout', function(event) {
-                    this.infowindow.close(map,this)
+                    this.infowindow.close(map,this);
+
                 });
-                console.log(UCSC_locations[location].population)
             }
         }
 
         }
     }
 
-        //a: location, b: starTime, c:endTime
          getData = function(a,b,c){
           var temp = {};
-         $.getJSON("js/location_data.js", function (classElement) {
+         $.getJSON("data/data.json", function (classElement) {
              $.each(classElement, function (key, val) {
                  if (val.Day_And_Time.search(a) != -1 && val.starttime>=b && val.endtime<=c){
                      for (var location in UCSC_locations) {
@@ -301,6 +309,27 @@
          });
 //             console.log(UCSC_locations)
 
+     };
+
+      clearData= function(){
+         for(var ii in UCSC_locations){
+         UCSC_locations[ii].population = 0;
+         UCSC_locations[ii].classes = {}
+         }
+         for(var i in window.allCircles) {
+              window.allCircles[i].setMap(null);
+         }
+      };
+
+     myFunction=function(){
+
+        var a = document.getElementById("courses-variable");
+        var b = document.getElementById("start-time");
+        var c = document.getElementById("end-time");
+        a.style.display = 'none';
+        b.style.display = 'none';
+        c.style.display = 'none';
+        clearData()
      }
 
     </script>
