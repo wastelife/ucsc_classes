@@ -23,32 +23,8 @@
   </head>
 
   <body>
-    
-    <ul id="slide-out" class="side-nav">
-     <li>First line</li>
-     <li>Second line</li>
-     <li><div class="divider"></div></li>
-     <li><a class="subheader">Subheader</a></li>
-     <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse">This is a sideNav</a>
-
-  <script>
-  // Initialize collapse button
-  $(".button-collapse").sideNav({
-    menuWidth: 300, // Default is 300
-    edge: 'right', // Choose the horizontal origin
-    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    draggable: true // Choose whether you can drag to open on touch screens
-  });
-  // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-  //$('.collapsible').collapsible();
-  </script>
-
-    <div id="controls" class="nicebox">
-      <div>
-      <button class="button button1" onclick="myFunction()">Green</button>
-      <select id="courses-variable">
+    <div id="controls">
+      <select id="courses-variable" class="browser-default">
         <option value="HAHAHAHA" selected="selected">Select a day</option>
         <option value= "">All days </option>
         <option value="Mo">Monday</option>
@@ -58,7 +34,7 @@
         <option value="Fr">Friday</option>
         <option value="Sa">Saturday</option>
       </select>
-      <select id="start-time">
+      <select id="start-time" class="browser-default">
         <option value=0 selected="selected">Start after: Any</option>
         <option value=7>07:00AM</option>
         <option value=8>08:00AM</option>
@@ -75,7 +51,7 @@
         <option value=19>07:00PM</option>
         <option value=20>08:00PM</option>
       </select>
-      <select id="end-time">
+      <select id="end-time" class="browser-default">
         <option value=99 selected="selected">Ends by: Any</option>
         <option value=9>09:00AM</option>
         <option value=10>10:00AM</option>
@@ -92,35 +68,41 @@
         <option value=21>09:00PM</option>
         <option value=22>10:00PM</option>
       </select>
-      <style>
-      .button {
-          background-color: #4CAF50; /* Green */
-          border: none;
-          color: white;
-          padding: 15px 32px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 12px;
-          margin: 4px 2px;
-          cursor: pointer;
-      }
-      .button1 {
-          background-color: white;
-          color: black;
-          border: 2px solid #4CAF50;
-      }
-
-    </style>
-
-
-      </div>
     </div>
+
+    <!-- the content of sidenav -->
+    <ul id="slide-out" class="side-nav">
+     <li>First line</li>
+     <li>Second line</li>
+     <li><div class="divider"></div></li>
+     <li><a class="subheader">Subheader</a></li>
+     <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse">This is a sideNav</a>
+
     <div id="map"></div>
 
 
     <script src="js/location_data.js"></script>>
     <script>
+
+    // Initialize collapse button
+    $(".button-collapse").sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'right', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    });
+
+    // //Initialize the select element
+    // $(document).ready(function() {
+    //   $('select').material_select();
+    // });
+
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    //$('.collapsible').collapsible();
+
+
      var dayValue = document.getElementById("courses-variable").value;
      var startTime = document.getElementById("start-time").value;
      var endTime = document.getElementById("end-time").value;
@@ -317,6 +299,10 @@
                 google.maps.event.addListener(locationCircle, 'mouseout', function(event) {
                     this.infowindow.close(map,this);
 
+                });
+
+                //add click to show sideNav
+                google.maps.event.addListener(locationCircle, 'click', function() {
                 });
             }
         }
