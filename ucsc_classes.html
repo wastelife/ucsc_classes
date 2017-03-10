@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UCSC Courses and Events</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style123.css" media="screen" />
+    <script src="jquery-3.1.1.js"></script>
+    <!--<script type="text/javascript" src="https://raw.githubusercontent.com/77ahh/CE263_Final/master/all_data_3.json"></script>  -->
+
+  </head>
+
+  <body>
+    <div id="controls" class="nicebox">
+      <div>
+      <select id="courses-variable">
+        <option value="HAHAHAHA" selected="selected">Select a day</option>
+        <option value= "">All days </option>
+        <option value="Mo">Monday</option>
+        <option value="Tu">Tuesday</option>
+        <option value="We">Wednesday</option>
+        <option value="Th">Thursday</option>
+        <option value="Fr">Friday</option>
+        <option value="Sa">Saturday</option>
+      </select>
+      <select id="start-time">
+        <option value=0 selected="selected">Start after: Any</option>
+        <option value=7>07:00AM</option>
+        <option value=8>08:00AM</option>
+        <option value=9>09:00AM</option>
+        <option value=10>10:00AM</option>
+        <option value=11>11:00AM</option>
+        <option value=12>12:00PM</option>
+        <option value=13>01:00PM</option>
+        <option value=14>02:00PM</option>
+        <option value=15>03:00PM</option>
+        <option value=16>04:00PM</option>
+        <option value=17>05:00PM</option>
+        <option value=18>06:00PM</option>
+        <option value=19>07:00PM</option>
+        <option value=20>08:00PM</option>
+      </select>
+      <select id="end-time">
+        <option value=99 selected="selected">Ends by: Any</option>
+        <option value=9>09:00AM</option>
+        <option value=10>10:00AM</option>
+        <option value=11>11:00AM</option>
+        <option value=12>12:00AM</option>
+        <option value=13>01:00PM</option>
+        <option value=14>02:00PM</option>
+        <option value=15>03:00PM</option>
+        <option value=16>04:00PM</option>
+        <option value=17>05:00PM</option>
+        <option value=18>06:00PM</option>
+        <option value=19>07:00PM</option>
+        <option value=20>08:00PM</option>
+        <option value=21>09:00PM</option>
+        <option value=22>10:00PM</option>
+      </select>
+      </div>
+    </div>
+    <div id="map"></div>
+
+
+    <script src="location_data23333.js"></script>>
+    <script>
+     var dayValue = document.getElementById("courses-variable").value;
+     var startTime = document.getElementById("start-time").value;
+     var endTime = document.getElementById("end-time").value;
+     $.ajaxSetup({
+        async: false
+    });
+//     $.getJSON("events_data.json", function(json) {
+//     console.log(json);
+//     });
+
+    //Create the map
+    function initMap() {
+        var myLatlng = {lat: 36.993770, lng: -122.058924};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: myLatlng
+        });
+
+    //If "courses-variable" changes, delete all circles and create new ones
+       google.maps.event.addDomListener(document.getElementById("courses-variable"), 'change', function() {
+       dayValue = document.getElementById("courses-variable").value;
+       for(var ii in UCSC_locations){
+           UCSC_locations[ii].population = 0;
+           UCSC_locations[location].classes = {}
+       }
+       for(var i in window.allCircles) {
+            window.allCircles[i].setMap(null);
+       }
+       getData(dayValue,startTime,endTime);
+       if (map.getZoom() === 15) {
+           createCircle(70)
+       }
+       else if (map.getZoom() === 16) {
+           createCircle(40)
+       }
+       else if (map.getZoom() === 17) {
+           createCircle(25)
+       }
+       else{
+           createCircle(70)
+       }
+
+     });
+
+    //If "start-time" changes, delete all circles and create new ones
+       google.maps.event.addDomListener(document.getElementById("start-time"), 'change', function() {
+       startTime = document.getElementById("start-time").value;
+       for(var ii in UCSC_locations){
+           UCSC_locations[ii].population = 0;
+           UCSC_locations[location].classes = {}
+       }
+       for(var i in window.allCircles) {
+            window.allCircles[i].setMap(null);
+       }
+       getData(dayValue,startTime,endTime);
+       if (map.getZoom() === 15) {
+           createCircle(70)
+       }
+       else if (map.getZoom() === 16) {
+           createCircle(40)
+       }
+       else if (map.getZoom() === 17) {
+           createCircle(25)
+       }
+       else{
+           createCircle(70)
+       }
+     });
+
+       google.maps.event.addDomListener(document.getElementById("end-time"), 'change', function() {
+       endTime = document.getElementById("end-time").value;
+       for(var ii in UCSC_locations){
+           UCSC_locations[ii].population = 0
+           UCSC_locations[location].classes = {};
+       }
+       for(var i in window.allCircles) {
+            window.allCircles[i].setMap(null);
+       }
+       getData(dayValue,startTime,endTime);
+       if (map.getZoom() === 15) {
+           createCircle(70)
+       }
+       else if (map.getZoom() === 16) {
+           createCircle(40)
+       }
+       else if (map.getZoom() === 17) {
+           createCircle(25)
+       }
+       else{
+           createCircle(70)
+       }
+     });
+
+    // If zoom changes, delete all circles and create new ones
+       google.maps.event.addListener(map, 'zoom_changed', function() {
+           if(map.getZoom()<=17) {
+               for (var i in window.allCircles) {
+                   window.allCircles[i].setMap(null);
+               }
+               window.allCircles = [];
+               if (map.getZoom() === 15) {
+                   createCircle(70)
+               }
+               else if (map.getZoom() === 16) {
+                   createCircle(40)
+               }
+               else if (map.getZoom() === 17) {
+                   createCircle(25)
+               }
+               else{
+                   createCircle(70)
+               }
+           }
+    });
+
+
+
+    // Keep track of the min and max of population in the selected time.
+        var populationMin =5;
+        var populationMax =5;
+        for (var location in UCSC_locations) {
+            if(UCSC_locations[location].population>0) {
+                if (UCSC_locations[location].population < populationMin) {
+                    populationMin = UCSC_locations[location].population;
+                }
+                if (UCSC_locations[location].population > populationMax) {
+                    populationMax = UCSC_locations[location].population;
+                }
+            }
+        }
+
+        function createCircle(rr) {
+            window.allCircles = [];
+            for (var location in UCSC_locations) {
+              var color = [];
+              var opacity= 0.35;
+              if(UCSC_locations[location].population>0) {
+                 var pp = UCSC_locations[location].population;
+                if (pp<=100){
+                    color[0] = 113;
+                    color[1] = 100;
+                    color[2] = (85-30*pp/100)
+                    opacity= 0.2;
+                }
+                else if (pp<=500){
+                    color[0] = 70;
+                    color[1] = 100;
+                    color[2] = (70-30*pp/500);
+                    opacity= 0.4;
+                }
+                else if (pp<=1000){
+                    color[0] = 40 ;
+                    color[1] = 100;
+                    color[2] = (75-30*pp/1000);
+                    opacity= 0.5;
+                }
+                else if(pp<=1800){
+                    color[0] = 20;
+                    color[1] = 100;
+                    opacity= 0.6;
+                    if(70-30*pp*1800<=50) {
+                        color[2] = 70 - 30 * pp / 1800
+                    }
+                    else{color[2] = 50}
+                }
+                else if(pp<=3300){
+                    color[0] = 5;
+                    color[1] = 100;
+                    opacity= 0.7;
+                    if(70-30*pp*3300<=50) {
+                        color[2] = 70 - 30 * pp / 3300
+                    }
+                    else{color[2] = 50}
+                }
+
+                else{
+                    color[0] = 0;
+                    color[1] = 100;
+                    color[2] = 45;
+                    opacity= 0.8;
+                }
+
+                color = 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)';
+                var locationCircle = new google.maps.Circle({
+                    strokeColor: '#FF300',
+                    strokeOpacity: 0.7,
+                    strokeWeight: 0.8,
+                    fillColor: color,
+                    fillOpacity: opacity,
+                    map: map,
+                    center: UCSC_locations[location].center,
+                    radius: rr,
+                    information: pp,
+                    infowindow: new google.maps.InfoWindow({
+//                      content: JSON.stringify(UCSC_locations[location].classes),
+                        content: JSON.stringify(pp),
+                        position: UCSC_locations[location].center
+                      })
+                });
+
+                window.allCircles.push(locationCircle);
+
+                google.maps.event.addListener(locationCircle, 'mouseover', function () {
+                    this.infowindow.open(map,this)
+                });
+
+                google.maps.event.addListener(locationCircle, 'mouseout', function(event) {
+                    this.infowindow.close(map,this)
+                });
+                console.log(UCSC_locations[location].population)
+            }
+        }
+
+        }
+    }
+
+        //a: location, b: starTime, c:endTime
+         getData = function(a,b,c){
+          var temp = {};
+         $.getJSON("data3333333333.json", function (classElement) {
+             $.each(classElement, function (key, val) {
+                 if (val.Day_And_Time.search(a) != -1 && val.starttime>=b && val.endtime<=c){
+                     for (var location in UCSC_locations) {
+                         if (val.Class_Location.search(UCSC_locations[location].Location) != -1){
+                             UCSC_locations[location].population += val.Capacity;
+                             temp[val.Subject+"   "+val.Class_Number + "   " + val.Class_name] = val.Day_And_Time;
+                             UCSC_locations[location].classes= $.extend({}, temp)
+                         }
+                     }
+
+                 }
+             })
+         });
+//             console.log(UCSC_locations)
+
+     }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiRRPyv19TADLDHpnAdMEpO5ORBtM7iYo&callback=initMap">
+    </script>
+  </body>
+</html>
+
