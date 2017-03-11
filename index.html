@@ -72,7 +72,7 @@
 
     <!-- the content of sidenav -->
     <ul id="slide-out" class="side-nav">
-     <li>First line</li>
+     <li id="capacity">First line</li>
      <li>Second line</li>
      <li><div class="divider"></div></li>
      <li><a class="subheader">Subheader</a></li>
@@ -87,7 +87,7 @@
     <script src="js/location_data.js"></script>>
     <script>
 
-    // Initialize collapse button
+    // Initialize collapse button(show sideNav) by ww
     $(document).ready(function() {
       $(".button-collapse").sideNav({
         menuWidth: 300, // Default is 300
@@ -96,15 +96,6 @@
         draggable: true // Choose whether you can drag to open on touch screens
       });
     })
-
-    // //Initialize the select element
-    // $(document).ready(function() {
-    //   $('select').material_select();
-    // });
-
-    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-    //$('.collapsible').collapsible();
-
 
      var dayValue = document.getElementById("courses-variable").value;
      var startTime = document.getElementById("start-time").value;
@@ -117,6 +108,7 @@
      console.log(json);
      });
 
+    //  function: showNavinfo by ww
      function showNavinfo() {
        $('.button-collapse').sideNav('show');
      }
@@ -288,8 +280,8 @@
                     information: pp,
                     infowindow: new google.maps.InfoWindow({
                         content: JSON.stringify(UCSC_locations[location].classes),
-//                        content: JSON.stringify(UCSC_locations[location].Location),
-                        position: UCSC_locations[location].center
+                      //  content: JSON.stringify(UCSC_locations[location].Location),
+                        // position: UCSC_locations[location].center
                       })
                 });
 
@@ -307,10 +299,12 @@
 
                 });
 
-                //add click to show sideNav
-                google.maps.event.addListener(locationCircle, 'click', function() {
+                //add click to show sideNav by ww
+                locationCircle.addListener('click', function() {
                   showNavinfo();
-                  console.log('click');
+                  // console.log(this.information);
+                  // capacity is the id of the first li
+                  $('#capacity').html(this.information);
                 });
             }
         }
