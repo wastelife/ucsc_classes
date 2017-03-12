@@ -10,7 +10,7 @@ var UCSC_locations = {
         population: 0,
         classes: {}
     },
-    L3: {Location:"Soc Sci 1",
+    L3: {Location:"Humanities 1",
         center: {lat: 36.998021, lng: -122.054703},
         population:0,
         classes: {}
@@ -200,11 +200,6 @@ var UCSC_locations = {
         classes: {}
     },
 
-    l38: {Location:"Nat Sci 2",
-        center: {lat: 36.998691, lng: -122.060521},
-        population: 0,
-        classes: {}
-    },
     l39: {Location:"Agroecology",
         center: {lat: 37.000557, lng: -122.057416},
         population: 0,
@@ -221,52 +216,7 @@ var UCSC_locations = {
         classes: {}
     },
 
-    l42: {Location:"50 Mtr Pool",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l43: {Location:"OPERS Conference",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l44: {Location:"East Gym",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l45: {Location:"E Racquet Ct",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l46: {Location:"E Tennis Ct",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l47: {Location:"E Racquet Ct",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l48: {Location: "Dance Studio",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l49: {Location:"East Field",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l50: {Location:"Fitness/Wellness",
-        center: {lat: 36.994239, lng: -122.055003},
-        population: 0,
-        classes: {}
-    },
-    l51: {Location:"Martial Arts",
+    l51: {Location:"(East field)", //Martial Arts,"Fitness/Wellness","East Field","Dance Studio","E Racquet Ct","E Tennis Ct","E Racquet Ct","East Gym","OPERS Conference","50 Mtr Pool",
         center: {lat: 36.994239, lng: -122.055003},
         population: 0,
         classes: {}
@@ -287,32 +237,8 @@ var UCSC_locations = {
         population: 0,
         classes: {}
     },
-    l55: {Location:"TA Foundry",
-        center: {lat: 36.994864, lng: -122.062143},
-        population: 0,
-        classes: {}
-    },
-    l56: {Location:"TA Offices",
-        center: {lat: 36.994864, lng: -122.062143},
-        population: 0,
-        classes: {}
-    },
-    l57: {Location:"TA 2nd Stage",
-        center: {lat: 36.994864, lng: -122.062143},
-        population: 0,
-        classes: {}
-    },
-    l58: {Location:"TA Mainstage",
-        center: {lat: 36.994864, lng: -122.062143},
-        population: 0,
-        classes: {}
-    },
-    l59: {Location:"TA Lecture",
-        center: {lat: 36.994864, lng: -122.062143},
-        population: 0,
-        classes: {}
-    },
-    l60: {Location:"TA Studio",
+
+    l60: {Location:"(Theater Arts)",//TA Studio,"TA Lecture","TA Mainstage","TA 2nd Stage","TA Offices","TA Foundry",
         center: {lat: 36.994864, lng: -122.062143},
         population: 0,
         classes: {}

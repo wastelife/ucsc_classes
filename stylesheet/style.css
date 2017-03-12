@@ -8,124 +8,157 @@
       }
 
 html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
-            .box {
-          position: absolute;
-          text-align: center;
-          font-family: "Roboto", "Arial", sans-serif;
-          font-size: 20px;
-          z-index: 5;
-          /*box-shadow: 0 4px 6px -4px #333;*/
-          /*padding-left: 100px;
-          padding-top:200px;*/
-          width: 200px;
-          height: 50px;
-          /*background: rgb(255,255,255);*/
-          /*background: linear-gradient(to bottom,rgba(255,255,255,1) 0%,rgba(245,245,245,1) 100%);*/
-          /*border: rgb(229, 229, 229) 1px solid;*/
+        .box {
+             margin-top:-5em;
+            position: absolute;
+            text-align: center;
+            font-family: "Roboto", "Arial", sans-serif;
+            font-size: 1.4em;
+            z-index: 5;
+            width: 17em;
+            height: 4em;
         }
 
         #controls {
-          top: 250px;
-          left: 10px;
-          width: 120px;
-          height: 40px;
+          top: 9.6em;
+          left: 0.3em;
+          width: 8em;
+          height: 8em;
         }
-        /*#data-box {*/
-          /*top: 10px;*/
-          /*left: 500px;*/
-          /*height: 45px;*/
-          /*line-height: 45px;*/
-          /*display: none;*/
-        /*}*/
+
+        .select {
+          position: absolute;
+          margin-top:-5.5em;
+          margin-left:0;
+          top: 9.6em;
+          left: 0.3em;
+          width: 8em;
+          height: 8em;
+        }
         #courses-variable {
-          width: 250px;
-          height: 50px;
-        }
-        #time-variable {
-          width: 250px;
-          height: 50px;
+          margin-top:0.1em;
+          width: 7.5em;
+          height: 2em;
         }
         #start-time{
-          width: 250px;
-          height: 50px;
+          margin-top:0.1em;
+          width: 7.5em;
+          height: 2em;
         }
         #end-time{
-          width: 250px;
-          height: 50px;
+           margin-top:0.1em;
+          width: 7.5em;
+          height: 2em;
         }
-        #legend { 
-          display: flex; 
+        #legend {
+          position: absolute;
+          margin-top:0.9em;
+          display: flex;
           display: -webkit-box;
           background-color: transparent;
-          width: 230px;
-          height: 20px;
+          width: 12em;
+          height: 4em;
         }
         .color-key {
           background: linear-gradient(to right,
-            hsl(5, 69%, 54%) 0%,
-            hsl(29, 71%, 51%) 17%,
-            hsl(54, 74%, 47%) 33%,
-            hsl(78, 76%, 44%) 50%,
-            hsl(102, 78%, 41%) 67%,
-            hsl(127, 81%, 37%) 83%,
-            hsl(151, 83%, 34%) 100%);
+            hsl(5, 80%, 40%) 0%,
+            hsl(20, 80%, 45%) 17%,
+            hsl(40, 80%, 50%) 33%,
+            hsl(50, 80%, 55%) 50%,
+            hsl(70, 80%, 60%) 67%,
+            hsl(90, 80%, 65%) 83%,
+            hsl(113, 80%, 65%) 100%);
+           position: absolute;
           flex: 1;
           -webkit-box-flex: 1;
-          margin: 0 5px;
           text-align: left;
-          font-size: 1.0em;
           line-height: 1.0em;
-          height: 20px;
+          height: 1.5em;
+          width: 11em;
+          margin-left:0;
+          font-size: 1em;
          }
-         .nicebox {
-          position: absolute;
-          text-align: center;
-          font-family: "Roboto", "Arial", sans-serif;
-          font-size: 13px;
-          z-index: 5;
-          box-shadow: 0 4px 6px -4px #333;
-          padding: 5px 10px;
-          background: rgb(255,255,255);
-          background: linear-gradient(to bottom,rgba(255,255,255,1) 0%,rgba(245,245,245,1) 100%);
-          border: rgb(229, 229, 229) 1px solid;
-          margin-top:10px;
-          margin-left: -2px;
-          
-        }
-       /* #data-value { font-size: 2.0em; font-weight: bold }
-        #data-label { font-size: 2.0em; font-weight: normal; padding-right: 10px; }
-        #data-label:after { content: ':' }
-        #data-caret { margin-left: -5px; display: none; font-size: 14px; width: 14px}*/
+
+      #data-caret
+      { margin-left: 0.2em;
+        width: 0.7em;
+     font-size: 0.5em;
+     text-indent:0.2em
+      }
+      #data-caret1
+      { margin-left: 0;
+        width: 0.7em;
+     font-size: 0.5em;
+       text-indent:0em;
+      }
+      #data-caret2
+      { margin-left: 0;
+        width: 0.7em;
+     font-size: 0.5em;
+      }
+      #data-caret3
+      { margin-left: 0;
+        width: 0.7em;
+     font-size: 0.5em;
+      }
+      #data-caret4
+      { margin-left: 0;
+        width: 0.7em;
+     font-size: 0.5em;
+      }
+      #data-caret5
+      { margin-: 0;
+        width: 0.7em;
+     font-size: 0.5em;
+      }
+      #data-caret6
+      {
+        width: 0.7em;
+     font-size: 0.5em;
+      }
 
         .page-header h1{
-          font-size: 40px;
-          padding-left: 400px;
+          font-size: 3em;
+          padding-left: 3em;
         }
         #map{
-          width:1000px;
-          height: 500px;
-          margin-left:33px;
-        }
-        #right-botton{
-          margin-left: 100px;
-          display: inline-block;
-          margin-bottom: 20px;
-        }
-        #time-reminder{
-          font-size: 15px;
-          padding-left:100px;
-          padding-top:80px;
+          width:85em;
+          height: 32em;
+          margin-left:0;
         }
         .footer{
-          font-size:20px;
+          font-size:2em;
         }
         .footer h3{
-          padding-left:450px;
+          padding-left:20em;
         }
         #slide-out{
-          height: 500px;
-          margin-top:180px;
+          height: 32em;
+          margin-top:6.8em;
           border-radius: 3%;
         }
 
-        
+        #classes{
+           font-size: 1.2em;
+           line-height: 1
+        }
+
+        #show-events{
+          width: 7.5em;
+          height: 2em;
+            margin-top:0.9em;
+            margin-left:-0.3em;
+
+            font-size: 1em;
+            line-height: 1
+        }
+
+         #show-classes{
+          width: 7.5em;
+          height: 2em;
+            margin-top:0.2em;
+            margin-left:-0.3em;
+
+            font-size: 1em;
+            line-height: 1
+        }
