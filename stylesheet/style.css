@@ -67,7 +67,7 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
             hsl(50, 80%, 55%) 50%,
             hsl(70, 80%, 60%) 67%,
             hsl(90, 80%, 65%) 83%,
-            hsl(113, 80%, 65%) 100%);
+            hsl(113, 80%, 70%) 100%);
            position: absolute;
           flex: 1;
           -webkit-box-flex: 1;
@@ -162,3 +162,8 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
             font-size: 1em;
             line-height: 1
         }
+
+        #slide-out{
+            background-color:#e6ffcc;
+        }
+

@@ -18,85 +18,73 @@
          <h1><strong>What classes can we take in UCSC for our free time</strong></h1>
       </div>
       <div id="map"></div>
-      <div class="jumbotron">
-         <!--<div class="container">-->
-         <div id="controls" class="box">
-            <div id="legend">
-               <div class="color-key">
-                  <span id="data-caret"> 7000</span>
-                  <span id="data-caret00">|</span>
-                  <span id="data-caret1">3300</span>
-                  <span id="data-caret10">|</span>
-                  <span id="data-caret2">1800</span>
-                  <span id="data-caret20">|</span>
-                  <span id="data-caret3">1000</span>
-                  <span id="data-caret30">|</span>
-                  <span id="data-caret4">500</span>
-                  <span id="data-caret40">|</span>
-                  <span id="data-caret6">100</span>
-               </div>
+      <div id="controls" class="box">
+         <div id="legend">
+            <div class="color-key">
+               <span id="data-caret"> 7000</span>
+               <span id="data-caret00">|</span>
+               <span id="data-caret1">3300</span>
+               <span id="data-caret10">|</span>
+               <span id="data-caret2">1800</span>
+               <span id="data-caret20">|</span>
+               <span id="data-caret3">1000</span>
+               <span id="data-caret30">|</span>
+               <span id="data-caret4">500</span>
+               <span id="data-caret40">|</span>
+               <span id="data-caret6">100</span>
             </div>
-            <div class="select">
-               <select id="courses-variable" class="browser-default">
-                  <option value="HAHAHAHA" selected="selected">Select a day</option>
-                  <option value= "">All days </option>
-                  <option value="Mo">Monday</option>
-                  <option value="Tu">Tuesday</option>
-                  <option value="We">Wednesday</option>
-                  <option value="Th">Thursday</option>
-                  <option value="Fr">Friday</option>
-                  <option value="Sa">Saturday</option>
-               </select>
-               <select id="start-time" class="browser-default">
-                  <option value=0 selected="selected">Start after: Any</option>
-                  <option value=7>07:00AM</option>
-                  <option value=8>08:00AM</option>
-                  <option value=9>09:00AM</option>
-                  <option value=10>10:00AM</option>
-                  <option value=11>11:00AM</option>
-                  <option value=12>12:00PM</option>
-                  <option value=13>01:00PM</option>
-                  <option value=14>02:00PM</option>
-                  <option value=15>03:00PM</option>
-                  <option value=16>04:00PM</option>
-                  <option value=17>05:00PM</option>
-                  <option value=18>06:00PM</option>
-                  <option value=19>07:00PM</option>
-                  <option value=20>08:00PM</option>
-               </select>
-               <select id="end-time" class="browser-default">
-                  <option value=99 selected="selected">Ends by: Any</option>
-                  <option value=9>09:00AM</option>
-                  <option value=10>10:00AM</option>
-                  <option value=11>11:00AM</option>
-                  <option value=12>12:00AM</option>
-                  <option value=13>01:00PM</option>
-                  <option value=14>02:00PM</option>
-                  <option value=15>03:00PM</option>
-                  <option value=16>04:00PM</option>
-                  <option value=17>05:00PM</option>
-                  <option value=18>06:00PM</option>
-                  <option value=19>07:00PM</option>
-                  <option value=20>08:00PM</option>
-                  <option value=21>09:00PM</option>
-                  <option value=22>10:00PM</option>
-               </select>
-                    <a class="waves-effect waves-light btn"  onclick="showEvents()" id = "show-events"><i class="material-icons left">cloud</i>Show events</a>
-                    <a class="waves-effect waves-light btn"  onclick="showClasses()" id = "show-classes"><i class="material-icons left">cloud</i>Show classes</a>
-
+         </div>
+         <div class="select">
+            <select id="courses-variable" class="browser-default">
+               <option value="HAHAHAHA" selected="selected">Select a day</option>
+               <option value= "">All days </option>
+               <option value="Mo">Monday</option>
+               <option value="Tu">Tuesday</option>
+               <option value="We">Wednesday</option>
+               <option value="Th">Thursday</option>
+               <option value="Fr">Friday</option>
+               <option value="Sa">Saturday</option>
+            </select>
+            <select id="start-time" class="browser-default">
+               <option value=0 selected="selected">Start after: Any</option>
+               <option value=7>07:00AM</option>
+               <option value=8>08:00AM</option>
+               <option value=9>09:00AM</option>
+               <option value=10>10:00AM</option>
+               <option value=11>11:00AM</option>
+               <option value=12>12:00PM</option>
+               <option value=13>01:00PM</option>
+               <option value=14>02:00PM</option>
+               <option value=15>03:00PM</option>
+               <option value=16>04:00PM</option>
+               <option value=17>05:00PM</option>
+               <option value=18>06:00PM</option>
+               <option value=19>07:00PM</option>
+               <option value=20>08:00PM</option>
+            </select>
+            <select id="end-time" class="browser-default">
+               <option value=99 selected="selected">Ends by: Any</option>
+               <option value=9>09:00AM</option>
+               <option value=10>10:00AM</option>
+               <option value=11>11:00AM</option>
+               <option value=12>12:00AM</option>
+               <option value=13>01:00PM</option>
+               <option value=14>02:00PM</option>
+               <option value=15>03:00PM</option>
+               <option value=16>04:00PM</option>
+               <option value=17>05:00PM</option>
+               <option value=18>06:00PM</option>
+               <option value=19>07:00PM</option>
+               <option value=20>08:00PM</option>
+               <option value=21>09:00PM</option>
+               <option value=22>10:00PM</option>
+            </select>
+            <a class="waves-effect waves-light btn"  onclick="showEvents()" id = "show-events"><i class="material-icons left">cloud</i>Show events</a>
+            <a class="waves-effect waves-light btn"  onclick="showClasses()" id = "show-classes"><i class="material-icons left">cloud</i>Show classes</a>
          </div>
       </div>
       <ul id="slide-out" class="side-nav">
-         <li id="capacity">First line</li>
-         <li id="classes">Classes</li>
-         <li>Second line</li>
-         <li>
-            <div class="divider"></div>
-         </li>
-         <li><a class="subheader">Subheader</a></li>
-         <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
       </ul>
-
       <!--don't show nav button-->
       <a href="#" data-activates="slide-out" class="button-collapse"></a>
       <div class="footer">
@@ -111,7 +99,7 @@
          // Initialize collapse button(show sideNav) by ww
          $(document).ready(function() {
            $(".button-collapse").sideNav({
-             menuWidth: 400, // Default is 300
+             menuWidth: 260, // Default is 300
              edge: 'right', // Choose the horizontal origin
              closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
              draggable: true // Choose whether you can drag to open on touch screens
@@ -135,6 +123,7 @@
           $.ajaxSetup({
              async: false
          });
+
          //  function: showNavinfo by ww
           function showNavinfo() {
             $('.button-collapse').sideNav('show');
@@ -146,8 +135,8 @@
              var map = new google.maps.Map(document.getElementById('map'), {
                  zoom: 15,
                  center: myLatlng,
-                 maxZoom: 19,
-                 minZoom: 15,
+                 maxZoom: 17,
+                 minZoom: 13,
                  styles: [
                    {
                      "elementType": "geometry",
@@ -364,92 +353,147 @@
                    }
                  ]
              });
-             showClasses= function(){
-                clearMarkers();
-                var a = document.getElementById("courses-variable");
-                var b = document.getElementById("start-time");
-                var c = document.getElementById("end-time");
-                var d = document.getElementById("legend");
-                a.style.display = 'block';
-                b.style.display = 'block';
-                c.style.display = 'block';
-                d.style.display = 'block';
-                if(dataCleared) {
-                    getData(dayValue, startTime, endTime);
-                    if (map.getZoom() === 15) {
-                        createCircle(70)
-                    }
-                    else if (map.getZoom() === 16) {
-                        createCircle(40)
-                    }
-                    else if (map.getZoom() === 17) {
-                        createCircle(25)
-                    }
-                    else {
-                        createCircle(70)
-                    }
-                   dataCleared=0;
-                   markerCleared=1;
-                }
-                };
-         //If "courses-variable" changes, delete all circles and create new ones
+
+                  var allowedBounds = new google.maps.LatLngBounds(
+                    new google.maps.LatLng(36.946140, -122.090920),
+                    new google.maps.LatLng(37.009562, -122.011150));
+
+                  // Listen for the dragend event
+                  google.maps.event.addListener(map, 'dragend', function() {
+                    if (allowedBounds.contains(map.getCenter())) return;
+                    // Out of bounds - Move the map back within the bounds
+                    var c = map.getCenter(),
+                        x = c.lng(),
+                        y = c.lat(),
+                        maxX = allowedBounds.getNorthEast().lng(),
+                        maxY = allowedBounds.getNorthEast().lat(),
+                        minX = allowedBounds.getSouthWest().lng(),
+                        minY = allowedBounds.getSouthWest().lat();
+
+                    if (x < minX) x = minX;
+                    if (x > maxX) x = maxX;
+                    if (y < minY) y = minY;
+                    if (y > maxY) y = maxY;
+
+                    map.setCenter(new google.maps.LatLng(y, x));
+                  });
+
+
+                   showClasses= function(){
+                      clearMarkers();
+                      var a = document.getElementById("courses-variable");
+                      var b = document.getElementById("start-time");
+                      var c = document.getElementById("end-time");
+                      var d = document.getElementById("legend");
+                      a.style.display = 'block';
+                      b.style.display = 'block';
+                      c.style.display = 'block';
+                      d.style.display = 'block';
+                      if(dataCleared) {
+                          getData(dayValue, startTime, endTime);
+                          if (map.getZoom() === 15) {
+                              createCircle(70)
+                          }
+                          else if (map.getZoom() === 16) {
+                              createCircle(40)
+                          }
+                          else if (map.getZoom() === 17) {
+                              createCircle(25)
+                          }
+                          else {
+                              createCircle(70)
+                          }
+                         dataCleared=0;
+                         markerCleared=1;
+                      }
+                   };
+
+                  var rectangle1 = new google.maps.Rectangle({
+                   strokeColor: '#FF0000',
+                   strokeOpacity: 0.8,
+                   strokeWeight: 2,
+                   fillOpacity: 0,
+                   map: map,
+                   bounds: {
+                     north: 36.953233,
+                     south: 36.949,
+                     east:  -122.06001,
+                     west: -122.0696
+                   }
+                 });
+
+                  var rectangle2 = new google.maps.Rectangle({
+                   strokeColor: '#FF0000',
+                   strokeOpacity: 0.8,
+                   strokeWeight: 2,
+                   fillOpacity: 0,
+                   map: map,
+                   bounds: {
+                     north: 36.972784,
+                     south: 36.969144,
+                     east: -122.001267,
+                     west: -122.007168
+                   }
+                 });
+
+          //If "courses-variable" changes, delete all circles and create new ones
             google.maps.event.addDomListener(document.getElementById("courses-variable"), 'change', function() {
             dayValue = document.getElementById("courses-variable").value;
-            clearData();
-            getData(dayValue,startTime,endTime);
-            if (map.getZoom() === 15) {
-                createCircle(70)
-            }
-            else if (map.getZoom() === 16) {
-                createCircle(40)
-            }
-            else if (map.getZoom() === 17) {
-                createCircle(25)
-            }
-            else{
-                createCircle(70)
-            }
+                     clearData();
+                     getData(dayValue,startTime,endTime);
+                     if (map.getZoom() === 15) {
+                         createCircle(70)
+                     }
+                     else if (map.getZoom() === 16) {
+                         createCircle(40)
+                     }
+                     else if (map.getZoom() === 17) {
+                         createCircle(25)
+                     }
+                     else{
+                         createCircle(70)
+                     }
 
-          });
+                  });
 
-         //If "start-time" changes, delete all circles and create new ones
+           //If "start-time" changes, delete all circles and create new ones
             google.maps.event.addDomListener(document.getElementById("start-time"), 'change', function() {
-            startTime = document.getElementById("start-time").value;
-            clearData();
-            getData(dayValue,startTime,endTime);
-            if (map.getZoom() === 15) {
-                createCircle(70)
-            }
-            else if (map.getZoom() === 16) {
-                createCircle(40)
-            }
-            else if (map.getZoom() === 17) {
-                createCircle(25)
-            }
-            else{
-                createCircle(70)
-            }
-          });
+                     startTime = document.getElementById("start-time").value;
+                     clearData();
+                     getData(dayValue,startTime,endTime);
+                     if (map.getZoom() === 15) {
+                         createCircle(70)
+                     }
+                     else if (map.getZoom() === 16) {
+                         createCircle(40)
+                     }
+                     else if (map.getZoom() === 17) {
+                         createCircle(25)
+                     }
+                     else{
+                         createCircle(70)
+                     }
+            });
 
             google.maps.event.addDomListener(document.getElementById("end-time"), 'change', function() {
-            endTime = document.getElementById("end-time").value;
-            clearData();
-            getData(dayValue,startTime,endTime);
-            if (map.getZoom() === 15) {
-                createCircle(70)
-            }
-            else if (map.getZoom() === 16) {
-                createCircle(40)
-            }
-            else if (map.getZoom() === 17) {
-                createCircle(25)
-            }
-            else{
-                createCircle(70)
-            }
-          });
+                     endTime = document.getElementById("end-time").value;
+                     clearData();
+                     getData(dayValue,startTime,endTime);
+                     if (map.getZoom() === 15) {
+                         createCircle(70)
+                     }
+                     else if (map.getZoom() === 16) {
+                         createCircle(40)
+                     }
+                     else if (map.getZoom() === 17) {
+                         createCircle(25)
+                     }
+                     else{
+                         createCircle(70)
+                     }
+         });
 
-         // If zoom changes, delete all circles and create new ones
+            // If zoom changes, delete all circles and create new ones
             google.maps.event.addListener(map, 'zoom_changed', function() {
                 if(map.getZoom()<=17) {
                     for (var i in window.allCircles) {
@@ -468,179 +512,252 @@
                         createCircle(70)
                     }
                 }
-         });
+            });
 
-          function createCircle(rr) {
-              window.allCircles = [];
-              for (var location in UCSC_locations) {
-                var color = [];
-                var opacity= 0.35;
-                   var pp = UCSC_locations[location].population;
-                   var cs = JSON.stringify(UCSC_locations[location].classes);
-                if(pp>0) {
+            function createCircle(rr) {
+                 window.allCircles = [];
+                 for (var location in UCSC_locations) {
+                   var color = [];
+                   var opacity= 0.35;
+                      var pp = UCSC_locations[location].population;
+                      var cs =UCSC_locations[location].classes;
+                   if(pp>0) {
 
-                  if (pp<=100){
-                      color[0] = 113;
-                      color[1] = 100;
-                      color[2] = (85-30*pp/100);
-                      opacity= 0.2;
-                  }
-                  else if (pp<=500){
-                      color[0] = 70;
-                      color[1] = 100;
-                      color[2] = (70-30*pp/500);
-                      opacity= 0.4;
-                  }
-                  else if (pp<=1000){
-                      color[0] = 40 ;
-                      color[1] = 100;
-                      color[2] = (75-30*pp/1000);
-                      opacity= 0.5;
-                  }
-                  else if(pp<=1800){
-                      color[0] = 25;
-                      color[1] = 100;
-                      opacity= 0.6;
-                      if(70-30*pp*1800<=50) {
-                          color[2] = 70 - 30 * pp / 1800
-                      }
-                      else{color[2] = 50}
-                  }
-                  else if(pp<=3300){
-                      color[0] = 15;
-                      color[1] = 100;
-                      opacity= 0.7;
-                      if(70-30*pp*3300<=50) {
-                          color[2] = 70 - 30 * pp / 3300
-                      }
-                      else{color[2] = 50}
-                  }
-                  else{
-                      color[0] = 0;
-                      color[1] = 100;
-                      color[2] = 45;
-                      opacity= 0.8;
-                  }
-
-                  color = 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)';
-                  var locationCircle = new google.maps.Circle({
-                      strokeColor: '#FF300',
-                      strokeOpacity: 0.7,
-                      strokeWeight: 0.8,
-                      fillColor: color,
-                      fillOpacity: opacity,
-                      map: map,
-                      center: UCSC_locations[location].center,
-                      radius: rr,
-                      information: pp,
-                      classes: cs,
-                      infowindow: new google.maps.InfoWindow({
-                          content: JSON.stringify(pp),
-                          position: UCSC_locations[location].center
-                        })
-                  });
-                  window.allCircles.push(locationCircle);
-
-                       google.maps.event.addListener(locationCircle, 'mouseover', function () {
-                           this.infowindow.open(map,this);
-                            });
-                       google.maps.event.addListener(locationCircle, 'mouseout', function(event) {
-                           this.infowindow.close(map,this);
-                            });
-
-                  //add click to show sideNav by ww
-                  locationCircle.addListener('click', function() {
-                    showNavinfo();
-                    // console.log(this.information);
-                    // capacity is the id of the first li
-                    $('#classes').html(this.classes);
-                  });
-               }
-             }
-          }
-
-       creatMarker= function(){
-           window.allMarkers = [];
-           var temp = {};
-           $.getJSON("data/data4444444.json", function (eventElement) {
-               $.each(eventElement, function (key, val) {
-                       for (var ii in UCSC_locations) {
-                           if (val.location.search(UCSC_locations[ii].Location)!= -1){
-                               temp[val.title+"   "+val.url] = val.date;
-                                var marker = new google.maps.Marker({
-                                 position: UCSC_locations[ii].center,
-                                 map: map,
-                                 title:'event',
-                                 infowindow: new google.maps.InfoWindow({
-                                    content: JSON.stringify(temp),
-                                    position: UCSC_locations[ii].center
-                                    })
-                               });
-                                window.allMarkers.push(marker);
-                                 google.maps.event.addListener(marker, 'click', function (){
-                                 this.infowindow.open(map,this);
-                               });
-                            }
+                     if (pp<=100){
+                         color[0] = 113;
+                         color[1] = 100;
+                         color[2] = (85-30*pp/100);
+                         opacity= 0.2;
+                     }
+                     else if (pp<=500){
+                         color[0] = 70;
+                         color[1] = 100;
+                         color[2] = (70-30*pp/500);
+                         opacity= 0.4;
+                     }
+                     else if (pp<=1000){
+                         color[0] = 40 ;
+                         color[1] = 100;
+                         color[2] = (75-30*pp/1000);
+                         opacity= 0.5;
+                     }
+                     else if(pp<=1800){
+                         color[0] = 25;
+                         color[1] = 100;
+                         opacity= 0.6;
+                         if(70-30*pp*1800<=50) {
+                             color[2] = 70 - 30 * pp / 1800
                          }
-                      })
-                   });
-                }
+                         else{color[2] = 50}
+                     }
+                     else if(pp<=3300){
+                         color[0] = 15;
+                         color[1] = 100;
+                         opacity= 0.7;
+                         if(70-30*pp*3300<=50) {
+                             color[2] = 70 - 30 * pp / 3300
+                         }
+                         else{color[2] = 50}
+                     }
+                     else{
+                         color[0] = 0;
+                         color[1] = 100;
+                         color[2] = 45;
+                         opacity= 0.8;
+                     }
 
+                     color = 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)';
+                     var locationCircle = new google.maps.Circle({
+                         strokeColor: '#FF300',
+                         strokeOpacity: 0.7,
+                         strokeWeight: 0.8,
+                         fillColor: color,
+                         fillOpacity: opacity,
+                         map: map,
+                         center: UCSC_locations[location].center,
+                         radius: rr,
+                         information: pp,
+                         classes: cs,
+                         infowindow: new google.maps.InfoWindow({
+                             content: JSON.stringify(pp),
+                             position: UCSC_locations[location].center
+                           })
+                     });
+                     window.allCircles.push(locationCircle);
 
+                     google.maps.event.addListener(locationCircle, 'mouseover', function () {
+                          this.infowindow.open(map,this);
+                           });
+                     google.maps.event.addListener(locationCircle, 'mouseout', function(event) {
+                          this.infowindow.close(map,this);
+                           });
 
+                     locationCircle.addListener('click', function() {
+                           removeNodes();
+                       for(var ii in this.classes){
+                           var cc= this.classes[ii];
+                           cc['Subject']= "Subject: " +cc['Subject'];
+                           cc['Class number']= "Class number: " +cc['Class number'];
+                           cc['Capacity']= "Capacity: "+ cc['Capacity'];
+                           var subjectDiv= document.createElement("li");
+                           subjectDiv.style.cssText = 'margin-top:0.8em;line-height: 1.2em;color:#3399ff;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           var classNumberDiv= document.createElement("li");
+                           classNumberDiv.style.cssText = 'margin-top:-0.7em;line-height: 3.3em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           var classNameDiv= document.createElement("li");
+                           classNameDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           var dayAndTimeDiv= document.createElement("li");
+                           dayAndTimeDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           var capacityDiv= document.createElement("li");
+                           capacityDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           var locationDiv= document.createElement("li");
+                           locationDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           var subjectText = document.createTextNode(cc['Subject']);
+                           var classNumberText = document.createTextNode(cc['Class number']);
+                           var classNameText = document.createTextNode(cc['Class name']);
+                           var dayAndTimeText = document.createTextNode(cc['Day and time']);
+                           var capacityText = document.createTextNode(cc['Capacity']);
+                           var locationText = document.createTextNode(cc['Location']);
+
+                           subjectDiv.appendChild(subjectText);
+                           classNameDiv.appendChild(classNameText);
+                           classNumberDiv.appendChild(classNumberText);
+                           dayAndTimeDiv.appendChild(dayAndTimeText);
+                           capacityDiv.appendChild(capacityText);
+                           locationDiv.appendChild(locationText);
+                           var currentDiv = document.getElementById("slide-out");
+                           currentDiv.appendChild(subjectDiv);
+                           currentDiv.appendChild(classNumberDiv);
+                           currentDiv.appendChild(classNameDiv);
+                           currentDiv.appendChild(dayAndTimeDiv);
+                           currentDiv.appendChild(locationDiv);
+                           currentDiv.appendChild(capacityDiv);
+                       }
+                     showNavinfo();
+                     });
+                   }
+             }
          }
 
-           getData = function(a,b,c){
-            var temp = {};
-           $.getJSON("data/data.json", function (classElement) {
-               $.each(classElement, function (key, val) {
-                   if (val.Day_And_Time.search(a) != -1 && val.starttime>=b && val.endtime<=c){
-                       for (var location in UCSC_locations) {
-                           if (val.Class_Location.search(UCSC_locations[location].Location) != -1){
-                               UCSC_locations[location].population += val.Capacity;
-                               temp[val.Subject+"   "+val.Class_Number + "   " + val.Class_Location] = val.Day_And_Time;
-                               UCSC_locations[location].classes= $.extend(UCSC_locations[location].classes, temp);
-                               temp = {};
-                           }
+                  creatMarker= function(){
+                    window.allMarkers = [];
+                    $.getJSON("data/data4444444.json", function (eventElement) {
+                        $.each(eventElement, function (key, val) {
+                             for (var ii in UCSC_locations) {
+                                 if (val.location.search(UCSC_locations[ii].Location)!= -1) {
+                                     var temp = {};
+                                     UCSC_locations[ii].eventsNum++;
+                                     UCSC_locations[ii].events = Array.from(UCSC_locations[ii].events);
+                                     temp['Title'] = val.title;
+                                     temp['Date'] = val.date;
+                                     temp['Content'] = val.content;
+                                     temp['Link'] = val.eventlink;
+                                     temp['Image'] = val.eventImage;
+                                     UCSC_locations[ii].events.push(temp);
+                                 }
+                             }
+                        })
+                    });
+                    for(var location in UCSC_locations) {
+                       if(UCSC_locations[location].eventsNum>0) {
+                               var marker = new google.maps.Marker({
+                                   position: UCSC_locations[location].center,
+                                   map: map,
+                                   label: UCSC_locations[location].eventsNum > 1 ? String(UCSC_locations[location].eventsNum) : '',
+                                   events: UCSC_locations[location].events,
+                                   title: 'event',
+                                   infowindow: new google.maps.InfoWindow({
+                                       content: '',
+                                       position: UCSC_locations[location].center
+                                   })
+                               });
+                               window.allMarkers.push(marker);
+                               google.maps.event.addListener(marker, 'click', function () {
+                                   removeNodes();
+                                  this.infowindow.open(map, this);
+                                  for(var ii in this.events) {
+                                    var cc= this.events[ii];
+                                    var imageDiv= document.createElement("li");
+                                    var img= document.createElement('img');
+                                    img.src= cc['Image'];
+                                    img.width = '100';img.height = '100';
+                                    imageDiv.appendChild(img);
+                                    var currentDiv = document.getElementById("slide-out");
+                                    currentDiv.appendChild(imageDiv);
+                                    console.log(cc)
+                                  }
+                                  showNavinfo();
+                               });
+
                        }
-                   }
-               })
-           });
-       };
+                    }
+                  }
+         }
 
-        clearData= function(){
-           for(var ii in UCSC_locations){
-           UCSC_locations[ii].population = 0;
-           UCSC_locations[ii].classes = {}
-           }
-           for(var i in window.allCircles) {
-                window.allCircles[i].setMap(null);
-           }
-        };
+                    getData = function(a,b,c){
+                    $.getJSON("data/data.json", function (classElement) {
+                        $.each(classElement, function (key, val) {
+                            if (val.Day_And_Time.search(a) != -1 && val.starttime>=b && val.endtime<=c){
+                                for (var location in UCSC_locations) {
+                                    if (val.Class_Location.search(UCSC_locations[location].Location) != -1){
+                                        var temp = {};
+                                        UCSC_locations[location].population += val.Capacity;
+                                        UCSC_locations[location].classes= Array.from(UCSC_locations[location].classes);
+                                        temp['Subject']=val.Subject;
+                                        temp['Class number']= val.Class_Number;
+                                        temp['Day and time']= val.Day_And_Time;
+                                        temp['Class name']= val.Class_name;
+                                        temp['Capacity']= val.Capacity;
+                                        temp['Location']= val.Class_Location;
+                                        UCSC_locations[location].classes.push(temp);
+                                    }
+                                }
+                            }
+                        })
+                     });
+                  };
 
-        showEvents=function(){
-            if (markerCleared) {
-                var a = document.getElementById("courses-variable");
-                var b = document.getElementById("start-time");
-                var c = document.getElementById("end-time");
-                var d = document.getElementById("legend");
-                a.style.display = 'none';
-                b.style.display = 'none';
-                c.style.display = 'none';
-                d.style.display = 'none';
-                clearData();
-                dataCleared = 1;
-                markerCleared=0;
-                creatMarker();
-            }
-        };
+                           clearData= function(){
+                             removeNodes();
+                             for(var ii in UCSC_locations){
+                             UCSC_locations[ii].population = 0;
+                             UCSC_locations[ii].classes = {}
+                             }
+                             for(var i in window.allCircles) {
+                                  window.allCircles[i].setMap(null);
+                             }
+                           };
 
-        clearMarkers= function(){
-           for (var i in window.allMarkers) {
-               window.allMarkers[i].setMap(null);
-             }
+                           showEvents=function(){
+                              if (markerCleared) {
+                                  var a = document.getElementById("courses-variable");
+                                  var b = document.getElementById("start-time");
+                                  var c = document.getElementById("end-time");
+                                  var d = document.getElementById("legend");
+                                  a.style.display = 'none';
+                                  b.style.display = 'none';
+                                  c.style.display = 'none';
+                                  d.style.display = 'none';
+                                  clearData();
+                                  dataCleared = 1;
+                                  markerCleared=0;
+                                  creatMarker();
+                              }
+                           };
 
-        }
+                           clearMarkers= function(){
+                             removeNodes();
+                             for (var i in window.allMarkers) {
+                                 window.allMarkers[i].setMap(null);
+                               }
+                           };
+
+                            //remove all children of the node.
+                           removeNodes= function(){
+                               var myNode = document.getElementById("slide-out");
+                               while (myNode.firstChild) {
+                                  myNode.removeChild(myNode.firstChild);
+                               }
+                           }
 
 
       </script>
