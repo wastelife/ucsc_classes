@@ -120,6 +120,7 @@
           var endTime = document.getElementById("end-time").value;
           var dataCleared = 0;
           var markerCleared = 1;
+          var sideWindow= 0;
           $.ajaxSetup({
              async: false
          });
@@ -516,6 +517,7 @@
 
             function createCircle(rr) {
                  window.allCircles = [];
+                 window.marginCircles= [];
                  for (var location in UCSC_locations) {
                    var color = [];
                    var opacity= 0.35;
@@ -568,7 +570,6 @@
 
                      color = 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)';
                      var locationCircle = new google.maps.Circle({
-                         strokeColor: '#FF300',
                          strokeOpacity: 0.7,
                          strokeWeight: 0.8,
                          fillColor: color,
@@ -578,18 +579,38 @@
                          radius: rr,
                          information: pp,
                          classes: cs,
+                         index:location,
                          infowindow: new google.maps.InfoWindow({
                              content: JSON.stringify(pp),
                              position: UCSC_locations[location].center
                            })
                      });
+                     var marginCircle = new google.maps.Circle({
+                         strokeColor: '#ffffff',
+                         strokeOpacity: 1,
+                         strokeWeight: 3,
+                         fillColor: color,
+                         index:location,
+                         fillOpacity: 0.7,
+                         center: UCSC_locations[location].center,
+                         radius: rr*1.1
+                     });
                      window.allCircles.push(locationCircle);
+                     window.marginCircles.push(marginCircle);
 
                      google.maps.event.addListener(locationCircle, 'mouseover', function () {
                           this.infowindow.open(map,this);
+                          for (var ii in window.marginCircles){
+                              if (window.marginCircles[ii].index==this.index){
+                                  window.marginCircles[ii].setMap(map)
+                              }
+                          }
                            });
-                     google.maps.event.addListener(locationCircle, 'mouseout', function(event) {
+                     google.maps.event.addListener(locationCircle, 'mouseout', function() {
                           this.infowindow.close(map,this);
+                          for (var ii in window.marginCircles){
+                              window.marginCircles[ii].setMap(null)
+                          }
                            });
 
                      locationCircle.addListener('click', function() {
@@ -600,17 +621,17 @@
                            cc['Class number']= "Class number: " +cc['Class number'];
                            cc['Capacity']= "Capacity: "+ cc['Capacity'];
                            var subjectDiv= document.createElement("li");
-                           subjectDiv.style.cssText = 'margin-top:0.8em;line-height: 1.2em;color:#3399ff;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           subjectDiv.style.cssText = 'margin-top:1.2em;line-height: 1.4em;color:#3399ff;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var classNumberDiv= document.createElement("li");
-                           classNumberDiv.style.cssText = 'margin-top:-0.7em;line-height: 3.3em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           classNumberDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var classNameDiv= document.createElement("li");
-                           classNameDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           classNameDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var dayAndTimeDiv= document.createElement("li");
-                           dayAndTimeDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           dayAndTimeDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var capacityDiv= document.createElement("li");
-                           capacityDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           capacityDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var locationDiv= document.createElement("li");
-                           locationDiv.style.cssText = 'margin-top:-2em;line-height: 3.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
+                           locationDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var subjectText = document.createTextNode(cc['Subject']);
                            var classNumberText = document.createTextNode(cc['Class number']);
                            var classNameText = document.createTextNode(cc['Class name']);
@@ -640,6 +661,7 @@
 
                   creatMarker= function(){
                     window.allMarkers = [];
+                    clearData();
                     $.getJSON("data/data4444444.json", function (eventElement) {
                         $.each(eventElement, function (key, val) {
                              for (var ii in UCSC_locations) {
@@ -666,24 +688,56 @@
                                    events: UCSC_locations[location].events,
                                    title: 'event',
                                    infowindow: new google.maps.InfoWindow({
-                                       content: '',
+                                       content: UCSC_locations[location].Location,
                                        position: UCSC_locations[location].center
                                    })
                                });
                                window.allMarkers.push(marker);
+                               google.maps.event.addListener(marker, 'mouseover', function () {
+                                  this.infowindow.open(map,this);
+                               });
+                                    google.maps.event.addListener(marker, 'mouseout', function() {
+                                  this.infowindow.close(map,this);
+                               });
                                google.maps.event.addListener(marker, 'click', function () {
-                                   removeNodes();
-                                  this.infowindow.open(map, this);
+                                  removeNodes();
                                   for(var ii in this.events) {
                                     var cc= this.events[ii];
                                     var imageDiv= document.createElement("li");
+                                    imageDiv.style.cssText = 'margin-top:2em;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                                     var img= document.createElement('img');
-                                    img.src= cc['Image'];
+                                    var titleDiv= document.createElement('li');
+                                     titleDiv.style.cssText = 'margin-top:0;line-height: 1.3em;color:#ff6600;font-size:1.5em;font-family: "Roboto", "Arial", sans-serif;';
+                                    var dateDiv= document.createElement('li');
+                                    dateDiv.style.cssText = 'margin-top:0.3em;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;font-weight:bold;';
+                                    var contentDiv= document.createElement('li');
+                                    contentDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: Arial, Helvetica, sans-serif;font-style: oblique;';
+                                    var linkDiv= document.createElement('a');
+                                    linkDiv.style.cssText = 'margin-top:0.3em;margin-left:-2em;text-decoration: underline;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;color:#3399ff;';
+                                    var titleText = document.createTextNode(cc['Title']);
+                                    var dateText = document.createTextNode(cc['Date']);
+                                    var contentText = document.createTextNode(cc['Content']);
+                                    var linkText = document.createTextNode("See detail");
+                                    linkDiv.href=cc['Link'];
+                                    if (cc['Image']==="null"){
+                                        img.src = "http://static.ucsc.edu/_responsive/images/logos/ucsc-logotype.svg"
+                                    }
+                                    else {
+                                        img.src = cc['Image'];
+                                    }
                                     img.width = '100';img.height = '100';
                                     imageDiv.appendChild(img);
+                                    titleDiv.appendChild(titleText);
+                                    dateDiv.appendChild(dateText);
+                                    contentDiv.appendChild(contentText);
+                                    linkDiv.appendChild(linkText);
                                     var currentDiv = document.getElementById("slide-out");
                                     currentDiv.appendChild(imageDiv);
-                                    console.log(cc)
+                                    currentDiv.appendChild(titleDiv);
+                                    currentDiv.appendChild(dateDiv);
+                                    currentDiv.appendChild(contentDiv);
+                                    currentDiv.appendChild(linkDiv);
+
                                   }
                                   showNavinfo();
                                });
@@ -720,7 +774,9 @@
                              removeNodes();
                              for(var ii in UCSC_locations){
                              UCSC_locations[ii].population = 0;
-                             UCSC_locations[ii].classes = {}
+                             UCSC_locations[ii].classes = [];
+                             UCSC_locations[ii].events=[];
+                             UCSC_locations[ii].eventsNum= 0;
                              }
                              for(var i in window.allCircles) {
                                   window.allCircles[i].setMap(null);
@@ -737,7 +793,6 @@
                                   b.style.display = 'none';
                                   c.style.display = 'none';
                                   d.style.display = 'none';
-                                  clearData();
                                   dataCleared = 1;
                                   markerCleared=0;
                                   creatMarker();
