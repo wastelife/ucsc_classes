@@ -183,5 +183,5 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
           margin-bottom: -7px;
         }
         #credit-text{
-          margin-top: -2em;
+          margin-top: 0em;
         }
