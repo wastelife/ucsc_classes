@@ -4,7 +4,7 @@
       html, body {
         height: 100%;
         margin: 0;
-        padding: 0;
+        padding:0;
       }
 
 html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
@@ -17,6 +17,9 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
             z-index: 5;
             width: 17em;
             height: 4em;
+        }
+        .page-header{
+           text-align:center;
         }
 
         #controls {
@@ -44,6 +47,7 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
           margin-top:0.1em;
           width: 7.5em;
           height: 2em;
+          font-size:1em;
         }
         #end-time{
            margin-top:0.1em;
@@ -61,13 +65,17 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
         }
         .color-key {
           background: linear-gradient(to right,
-            hsl(5, 80%, 40%) 0%,
-            hsl(20, 80%, 45%) 17%,
-            hsl(40, 80%, 50%) 33%,
-            hsl(50, 80%, 55%) 50%,
-            hsl(70, 80%, 60%) 67%,
-            hsl(90, 80%, 65%) 83%,
-            hsl(113, 80%, 70%) 100%);
+            hsl(0, 100%, 40%) 0%,
+            hsl(10, 100%, 40%) 10%,
+            hsl(15, 100%, 45%) 20%,
+            hsl(25, 100%, 45%) 30%,
+            hsl(30, 100%, 55%) 40%,
+            hsl(45, 100%, 65%) 50%,
+            hsl(50, 100%, 75%) 60%,
+            hsl(65, 100%, 80%) 70%,
+            hsl(85, 100%, 75%) 80%,
+            hsl(113, 100%, 75%) 90%,
+            hsl(113, 100%, 55%) 100%);
            position: absolute;
           flex: 1;
           -webkit-box-flex: 1;
@@ -122,16 +130,18 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
           padding-left: 3em;
         }
         #map{
-          width:85em;
-          height: 32em;
+          width:100%;
+          height: 60%;
           margin-left:0;
         }
         .footer{
-          font-size:2em;
+          font-size:1.5em;
+          padding-left:2em;
+           margin-top:1.3em;
+          font-family: "Roboto", "Arial", sans-serif;
+          color: black
         }
-        .footer h3{
-          padding-left:20em;
-        }
+
         #slide-out{
           height: 32em;
           margin-top:6.8em;
@@ -166,4 +176,12 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
         #slide-out{
             background-color:#e6ffcc;
         }
-
+        #events-title{
+          display: none;
+        }
+        .select p{
+          margin-bottom: -7px;
+        }
+        #credit-text{
+          margin-top: -2em;
+        }

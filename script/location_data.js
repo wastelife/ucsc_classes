@@ -1,9 +1,4 @@
 var UCSC_locations = {
-    L1: {Location: "E Baskin",
-        center: {lat: 37.000355, lng: -122.063163},
-        population: 0,
-        classes: [], events: [],  eventsNum: 0
-    },
 
     L2: {Location: "Soc Sci 1",
         center: {lat: 37.002392, lng: -122.058094},
@@ -96,11 +91,6 @@ var UCSC_locations = {
     },
     l19: {Location:"Crown Clrm",
         center: {lat: 36.999611, lng: -122.054966},
-        population: 0,
-        classes: [], events: [],  eventsNum: 0
-    },
-    l20: {Location:"Steven Lib",
-        center: {lat: 36.996545, lng: -122.052064},
         population: 0,
         classes: [], events: [],  eventsNum: 0
     },
@@ -243,18 +233,14 @@ var UCSC_locations = {
         population: 0,
         classes: [], events: [],  eventsNum: 0
     },
-    l61: {Location:"Humn Lecture Hall",
-        center: {lat: 36.998627, lng: -122.054567},
-        population: 0,
-        classes: [], events: [],  eventsNum: 0
-    },
-    l62: {Location:"Steven Acad",
+
+    l62: {Location:"Steven",
         center: {lat: 36.996545, lng: -122.052064},
         population: 0,
         classes: [], events: [],  eventsNum: 0
     },
     L63: {Location:"Cowell Clrm",
-        center: {lat: 36.996658, lng: -122.054161},
+        center: {lat: 36.997, lng: -122.054161},
         population: 0,
         classes: [], events: [],  eventsNum: 0
     },

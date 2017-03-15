@@ -2,24 +2,24 @@
 <html>
    <head>
       <title>UCSC Courses and Events</title>
-      <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
       <meta charset="utf-8">
       <link type="text/css" rel="stylesheet" href="stylesheet/materialize.min.css"  media="screen,projection"/>
       <link rel="stylesheet" type="text/css" href="stylesheet/style.css" media="screen" />
       <script src="script/location_data.js"></script>
       <script src="script/jquery-3.1.1.js"></script>
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <script type="text/javascript" src="script/materialize.min.js"></script>
-      <style>
-      </style>
    </head>
    <body>
       <div class="page-header">
-         <h1><strong>What classes can we take in UCSC for our free time</strong></h1>
+         <h5><strong>What classes can we take at UCSC during our free time?</strong></h5>
+         <h5><strong>What events can we attend at UCSC during our free time?</strong></h5>
+         <h6 id="class-title">Start from Apr 3, Monday; End by June 15, Friday; 2017</h6>
+         <h6 id="events-title">All events during 2017</center></h6>
+         <p>You can use this vistualization to discover that yiou can take Beginning Tennis class from 9AM to 10AM on Tuesday or you can attend Graduate Research Symposium on May 12 on 1PM</center></p>
       </div>
       <div id="map"></div>
       <div id="controls" class="box">
-         <div id="legend">
+         <!-- <div id="legend">
             <div class="color-key">
                <span id="data-caret"> 7000</span>
                <span id="data-caret00">|</span>
@@ -33,10 +33,11 @@
                <span id="data-caret40">|</span>
                <span id="data-caret6">100</span>
             </div>
-         </div>
+         </div> -->
          <div class="select">
+         	<p id="select_p1" style="text-align:left;">Select a day: </p>
             <select id="courses-variable" class="browser-default">
-               <option value="HAHAHAHA" selected="selected">Select a day</option>
+               <option value="HAHAHAHA" selected="selected">click to select</option>
                <option value= "">All days </option>
                <option value="Mo">Monday</option>
                <option value="Tu">Tuesday</option>
@@ -45,8 +46,9 @@
                <option value="Fr">Friday</option>
                <option value="Sa">Saturday</option>
             </select>
+            <p id="select_p2" style="text-align:left;">Start from: </p>
             <select id="start-time" class="browser-default">
-               <option value=0 selected="selected">Start after: Any</option>
+               <option value=0 selected="selected">click to select</option>
                <option value=7>07:00AM</option>
                <option value=8>08:00AM</option>
                <option value=9>09:00AM</option>
@@ -62,8 +64,9 @@
                <option value=19>07:00PM</option>
                <option value=20>08:00PM</option>
             </select>
+            <p id="select_p3" style="text-align:left;">End by: </p>
             <select id="end-time" class="browser-default">
-               <option value=99 selected="selected">Ends by: Any</option>
+               <option value=99 selected="selected">click to select</option>
                <option value=9>09:00AM</option>
                <option value=10>10:00AM</option>
                <option value=11>11:00AM</option>
@@ -80,7 +83,7 @@
                <option value=22>10:00PM</option>
             </select>
             <a class="waves-effect waves-light btn"  onclick="showEvents()" id = "show-events">Show events</a>
-            <a class="waves-effect waves-light btn"  onclick="showClasses()" id = "show-classes">Show classes</a>
+         <a class="waves-effect waves-light btn"  onclick="showClasses()" id = "show-classes">Show classes</a>
          </div>
       </div>
       <ul id="slide-out" class="side-nav">
@@ -88,11 +91,20 @@
       <!--don't show nav button-->
       <a href="#" data-activates="slide-out" class="button-collapse"></a>
       <div class="footer">
-         <div class="container">
-            <div class="col-md-4">
-               <h3>Credits</h3>
-            </div>
+        <div id="imgfooter">
+          <img src="https://raw.githubusercontent.com/77ahh/tutorial/master/Screen%20Shot%202017-03-14%20at%2017.49.45.png" width="406" height="45">
+           <div id = "credit" class="page-header">
          </div>
+        </div>
+         <div class="container">
+	         <div id="credit-text">
+	         <!-- </div> -->
+           <h5><center>Credits</center></h5>
+	            <p style="font-size:20px;">Shiqi Wen swen8@ucsc.edu;&nbsp;&nbsp;&nbsp;Wei Wei wwei9@ucsc.edu;&nbsp;&nbsp;&nbsp;Hongyu Hua hohua@ucsc.edu
+	            </p>
+	         </div>
+         </div>
+
       </div>
       <script src="script/location_data.js"></script>
       <script>
@@ -120,7 +132,6 @@
           var endTime = document.getElementById("end-time").value;
           var dataCleared = 0;
           var markerCleared = 1;
-          var sideWindow= 0;
           $.ajaxSetup({
              async: false
          });
@@ -385,11 +396,21 @@
                       var a = document.getElementById("courses-variable");
                       var b = document.getElementById("start-time");
                       var c = document.getElementById("end-time");
-                      var d = document.getElementById("legend");
+                      // var d = document.getElementById("legend");
+                      var e = document.getElementById("class-title")
+                      var f = document.getElementById("events-title")
+                      var g = document.getElementById("select_p1")
+                      var h = document.getElementById("select_p2")
+                      var i = document.getElementById("select_p3")
                       a.style.display = 'block';
                       b.style.display = 'block';
                       c.style.display = 'block';
-                      d.style.display = 'block';
+                      // d.style.display = 'block';
+                      e.style.display = 'block';
+                      f.style.display = 'none';
+                      g.style.display = 'block';
+                      h.style.display = 'block';
+                      i.style.display = 'block';
                       if(dataCleared) {
                           getData(dayValue, startTime, endTime);
                           if (map.getZoom() === 15) {
@@ -496,6 +517,9 @@
 
             // If zoom changes, delete all circles and create new ones
             google.maps.event.addListener(map, 'zoom_changed', function() {
+                for(var mm in window.allCircles) {
+                    window.allCircles[mm].setMap(null);
+                  }
                 for(var ii in window.marginCircles){
                    window.marginCircles[ii].setMap(null);
                   }
@@ -527,48 +551,60 @@
                       var pp = UCSC_locations[location].population;
                       var cs =UCSC_locations[location].classes;
                    if(pp>0) {
-
                      if (pp<=100){
                          color[0] = 113;
                          color[1] = 100;
-                         color[2] = (85-30*pp/100);
-                         opacity= 0.2;
+                         color[2] = 55+20*pp/100;
+                         opacity= 0.3;
+                     }
+                     else if (pp<=300){
+                         color[0] = 113-28*(pp-100)/200;
+                         color[1] = 100;
+                         color[2] = 75;
+                         opacity= 0.3;
                      }
                      else if (pp<=500){
-                         color[0] = 70;
+                         color[0] = 85-20*(pp-300)/200 ;
                          color[1] = 100;
-                         color[2] = (70-30*pp/500);
+                         color[2] = 75+5*(pp-300)/300;
+                         opacity= 0.3;
+                     }
+                     else if(pp<=1000){
+                         color[0] = 65-15*(pp-500)/500;
+                         color[1] = 100;
+                         color[2] = 80 - 5*(pp-500)/500;
+                         opacity= 0.4;
+
+                     }
+                     else if(pp<=1500){
+                         color[0] = 45-15*(pp-1000)/500;
+                         color[1] = 100;
+                         color[2] = 65 - 10 * (pp-1000) /500;
                          opacity= 0.4;
                      }
-                     else if (pp<=1000){
-                         color[0] = 40 ;
+                     else if(pp<=2500){
+                         color[0] = 35-10* (pp-1500) /1000;
                          color[1] = 100;
-                         color[2] = (75-30*pp/1000);
-                         opacity= 0.5;
+                         color[2] = 55-10*(pp-1500)/1000;
+                         opacity= 0.4;
                      }
-                     else if(pp<=1800){
-                         color[0] = 25;
-                         color[1] = 100;
-                         opacity= 0.6;
-                         if(70-30*pp*1800<=50) {
-                             color[2] = 70 - 30 * pp / 1800
-                         }
-                         else{color[2] = 50}
-                     }
-                     else if(pp<=3300){
-                         color[0] = 15;
-                         color[1] = 100;
-                         opacity= 0.7;
-                         if(70-30*pp*3300<=50) {
-                             color[2] = 70 - 30 * pp / 3300
-                         }
-                         else{color[2] = 50}
-                     }
-                     else{
-                         color[0] = 0;
+                     else if(pp<=3500){
+                         color[0] = 25-10*(pp-2500)/1000;
                          color[1] = 100;
                          color[2] = 45;
-                         opacity= 0.8;
+                         opacity= 0.4+0.1*(pp-2500)/1000;
+                     }
+                     else if(pp<=5000){
+                         color[0] = 15-5* (pp-3500) /1500;
+                         color[1] = 100;
+                         color[2] = 45 - 5 * (pp-3500) /1500;
+                         opacity= 0.5+0.1*(pp-3500)/1500;
+                     }
+                     else if(pp<=7000){
+                         color[0] = 10-10* (pp-5000) /2000;
+                         color[1] = 100;
+                         color[2] =40;
+                         opacity= 0.6+0.1*(pp-5000)/2000;
                      }
 
                      color = 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)';
@@ -580,13 +616,13 @@
                          map: map,
                          center: UCSC_locations[location].center,
                          radius: rr,
-                         information: pp,
+                         information: "Capacity in total: "+pp,
                          classes: cs,
                          index:location,
-                         infowindow: new google.maps.InfoWindow({
-                             content: JSON.stringify(pp),
-                             position: UCSC_locations[location].center
-                           })
+//                         infowindow: new google.maps.InfoWindow({
+//                             content: JSON.stringify(pp),
+//                             position: UCSC_locations[location].center
+//                           })
                      });
                      var marginCircle = new google.maps.Circle({
                          strokeColor: '#ffffff',
@@ -602,7 +638,6 @@
                      window.marginCircles.push(marginCircle);
 
                      google.maps.event.addListener(locationCircle, 'mouseover', function () {
-                          this.infowindow.open(map,this);
                           for (var ii in window.marginCircles){
                               if (window.marginCircles[ii].index==this.index){
                                   window.marginCircles[ii].setMap(map)
@@ -610,7 +645,6 @@
                           }
                            });
                      google.maps.event.addListener(locationCircle, 'mouseout', function() {
-                          this.infowindow.close(map,this);
                           for (var ii in window.marginCircles){
                               window.marginCircles[ii].setMap(null)
                           }
@@ -618,6 +652,12 @@
 
                      locationCircle.addListener('click', function() {
                            removeNodes();
+                           var totalDiv = document.createElement("li");
+                           totalDiv.style.cssText = 'margin-top:0.5em;margin-left: 0; line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;font-style: italic;';
+                           var totalText=  document.createTextNode(this.information);
+                           var currentDiv = document.getElementById("slide-out");
+                           totalDiv.appendChild(totalText);
+                           currentDiv.appendChild(totalDiv);
                        for(var ii in this.classes){
                            var cc= this.classes[ii];
                            cc['Subject']= "Subject: " +cc['Subject'];
@@ -648,7 +688,6 @@
                            dayAndTimeDiv.appendChild(dayAndTimeText);
                            capacityDiv.appendChild(capacityText);
                            locationDiv.appendChild(locationText);
-                           var currentDiv = document.getElementById("slide-out");
                            currentDiv.appendChild(subjectDiv);
                            currentDiv.appendChild(classNumberDiv);
                            currentDiv.appendChild(classNameDiv);
@@ -784,8 +823,8 @@
                              for(var i in window.allCircles) {
                                   window.allCircles[i].setMap(null);
                              }
-                             for(var ii in window.marginCircles){
-                                 window.marginCircles[ii].setMap(null);
+                             for(var a in window.marginCircles){
+                                 window.marginCircles[a].setMap(null);
                              }
                            };
 
@@ -794,11 +833,21 @@
                                   var a = document.getElementById("courses-variable");
                                   var b = document.getElementById("start-time");
                                   var c = document.getElementById("end-time");
-                                  var d = document.getElementById("legend");
+                                  // var d = document.getElementById("legend");
+                                  var e = document.getElementById("class-title")
+                                  var f = document.getElementById("events-title")
+                                  var g = document.getElementById("select_p1")
+                                  var h = document.getElementById("select_p2")
+                                  var i = document.getElementById("select_p3")
                                   a.style.display = 'none';
                                   b.style.display = 'none';
                                   c.style.display = 'none';
-                                  d.style.display = 'none';
+                                  // d.style.display = 'none';
+                                  e.style.display = 'none';
+                                  f.style.display = 'block';
+                                  g.style.display = 'none';
+                                  h.style.display = 'none';
+                                  i.style.display = 'none';
                                   dataCleared = 1;
                                   markerCleared=0;
                                   creatMarker();
