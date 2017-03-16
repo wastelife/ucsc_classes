@@ -7,36 +7,50 @@
         padding:0;
       }
 
-html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+html, body, #map { margin: 0; padding: 0; overflow: hidden; }
         .box {
-             margin-top:-5em;
-            position: absolute;
             text-align: center;
+            position: relative;
             font-family: "Roboto", "Arial", sans-serif;
             font-size: 1.4em;
+            height: 40em;
+            margin-top:-17.8em;
+            width: 8em;
             z-index: 5;
-            width: 17em;
-            height: 4em;
         }
         .page-header{
            text-align:center;
         }
-
-        #controls {
-          top: 9.6em;
-          left: 0.3em;
-          width: 8em;
-          height: 8em;
+        .input[type=text] {
+            width: 8em;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
         }
 
+
         .select {
-          position: absolute;
-          margin-top:-5.5em;
-          margin-left:0;
-          top: 9.6em;
-          left: 0.3em;
-          width: 8em;
           height: 8em;
+          text-align: left;
+          margin-top: -4em;
+        }
+
+        .course-event-button{
+           position: absolute;
+           margin-top: -11em;
+           width: 7.5em;
+           margin-left:-0.3em;
+           font-size: 1em;
+        }
+
+         #show-classes{
+          height: 2em;
+          line-height: 1;
+          margin-top:0.2em;
+        }
+        #show-events{
+          height: 2em;
+          margin-top:0.9em;
+          line-height: 1
         }
         #courses-variable {
           margin-top:0.1em;
@@ -54,76 +68,13 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
           width: 7.5em;
           height: 2em;
         }
-        #legend {
-          position: absolute;
-          margin-top:0.9em;
-          display: flex;
-          display: -webkit-box;
-          background-color: transparent;
-          width: 12em;
-          height: 4em;
-        }
-        .color-key {
-          background: linear-gradient(to right,
-            hsl(0, 100%, 40%) 0%,
-            hsl(10, 100%, 40%) 10%,
-            hsl(15, 100%, 45%) 20%,
-            hsl(25, 100%, 45%) 30%,
-            hsl(30, 100%, 55%) 40%,
-            hsl(45, 100%, 65%) 50%,
-            hsl(50, 100%, 75%) 60%,
-            hsl(65, 100%, 80%) 70%,
-            hsl(85, 100%, 75%) 80%,
-            hsl(113, 100%, 75%) 90%,
-            hsl(113, 100%, 55%) 100%);
-           position: absolute;
-          flex: 1;
-          -webkit-box-flex: 1;
-          text-align: left;
-          line-height: 1.0em;
-          height: 1.5em;
-          width: 11em;
-          margin-left:0;
-          font-size: 1em;
-         }
 
-      #data-caret
-      { margin-left: 0.2em;
-        width: 0.7em;
-     font-size: 0.5em;
-     text-indent:0.2em
-      }
-      #data-caret1
-      { margin-left: 0;
-        width: 0.7em;
-     font-size: 0.5em;
-       text-indent:0em;
-      }
-      #data-caret2
-      { margin-left: 0;
-        width: 0.7em;
-     font-size: 0.5em;
-      }
-      #data-caret3
-      { margin-left: 0;
-        width: 0.7em;
-     font-size: 0.5em;
-      }
-      #data-caret4
-      { margin-left: 0;
-        width: 0.7em;
-     font-size: 0.5em;
-      }
-      #data-caret5
-      { margin-: 0;
-        width: 0.7em;
-     font-size: 0.5em;
-      }
-      #data-caret6
-      {
-        width: 0.7em;
-     font-size: 0.5em;
-      }
+        #slide-out{
+          height: 60%;
+          margin-top:12%;
+          border-radius: 3%;
+          background-color:#e6ffcc;
+        }
 
         .page-header h1{
           font-size: 3em;
@@ -132,56 +83,32 @@ html, body, #map { height: 100%; margin: 0; padding: 0; overflow: hidden; }
         #map{
           width:100%;
           height: 60%;
-          margin-left:0;
         }
         .footer{
           font-size:1.5em;
           padding-left:2em;
-           margin-top:1.3em;
+           margin-top:-42.5em;
+          width:100%;
           font-family: "Roboto", "Arial", sans-serif;
           color: black
         }
-
-        #slide-out{
-          height: 32em;
-          margin-top:10.3em;
-          border-radius: 3%;
+        #imgfooter{
+            display:inline;
+            width:20em;
+            margin-left: -3.5em;
+            margin-top: -2em;
+            font-size: 0.6em;
         }
-
-        #classes{
-           font-size: 1.2em;
-           line-height: 1
+        #author{
+          margin-left: 30em;
+          margin-top: 3em;
+          font-size: 0.7em;
         }
-
-        #show-events{
-          width: 7.5em;
-          height: 2em;
-            margin-top:0.9em;
-            margin-left:-0.3em;
-
-            font-size: 1em;
-            line-height: 1
-        }
-
-         #show-classes{
-          width: 7.5em;
-          height: 2em;
-            margin-top:0.2em;
-            margin-left:-0.3em;
-
-            font-size: 1em;
-            line-height: 1
-        }
-
-        #slide-out{
-            background-color:#e6ffcc;
-        }
-        #events-title{
-          display: none;
-        }
-        .select p{
-          margin-bottom: -7px;
-        }
-        #credit-text{
-          margin-top: -2em;
+        #credits{
+         width:25em;
+         line-height: 0.9;
+         margin-top: -5.9em;
+         margin-left: -2.7em;
+         font-size:0.65em;
+         font-style: italic;
         }

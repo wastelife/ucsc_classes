@@ -15,26 +15,31 @@
          <h5><strong>What events can we attend at UCSC during our free time?</strong></h5>
          <h6 id="class-title">Start from Apr 3, Monday; End by June 15, Friday; 2017</h6>
          <h6 id="events-title">All events during 2017</h6>
-         <p>You can use this visualization to discover that you can take Beginning Tennis class from 9AM to 10AM on Tuesday or you can attend Graduate Research Symposium on May 12 on 1PM</center></p>
+         <p>You can use this visualization to discover that you can take Beginning Tennis class from 9AM to 10AM
+            on Tuesday or you can attend Graduate Research Symposium on May 12 on 1PM </p>
       </div>
       <div id="map"></div>
-      <div id="controls" class="box">
-         <div class="select">
-         	<p id="select_p1" style="text-align:left;">Select a day: </p>
+
+      <div  class="box">
+
+         <!--<div class = "search-box">-->
+            <!--<input type="text" name="search" placeholder="Search..">-->
+         <!--</div>-->
+         <div class="select" id="select">
+            <label for="courses-variable" style=" color:black; font-size:0.8em; ">Select a day:</label>
             <select id="courses-variable" class="browser-default">
-               <option value="HAHAHAHA" selected="selected">click to select</option>
-               <option value= "">All days </option>
+               <option value= ""  selected="selected">All days </option>
                <option value="Mo">Monday</option>
                <option value="Tu">Tuesday</option>
                <option value="We">Wednesday</option>
                <option value="Th">Thursday</option>
                <option value="Fr">Friday</option>
                <option value="Sa">Saturday</option>
+               <option value="Su">Sunday</option>
             </select>
-            <p id="select_p2" style="text-align:left;">Start from: </p>
+            <label for="start-time" style=" color:black; font-size:0.8em; ">Start from:</label>
             <select id="start-time" class="browser-default">
-               <option value=0 selected="selected">click to select</option>
-               <option value=7>07:00AM</option>
+               <option value=7 selected="selected">07:00AM</option>
                <option value=8>08:00AM</option>
                <option value=9>09:00AM</option>
                <option value=10>10:00AM</option>
@@ -49,9 +54,8 @@
                <option value=19>07:00PM</option>
                <option value=20>08:00PM</option>
             </select>
-            <p id="select_p3" style="text-align:left;">End by: </p>
+            <label for="end-time" style=" color:black; font-size:0.8em;width: 8em; text-align: left;">End by:</label>
             <select id="end-time" class="browser-default">
-               <option value=99 selected="selected">click to select</option>
                <option value=9>09:00AM</option>
                <option value=10>10:00AM</option>
                <option value=11>11:00AM</option>
@@ -65,30 +69,32 @@
                <option value=19>07:00PM</option>
                <option value=20>08:00PM</option>
                <option value=21>09:00PM</option>
-               <option value=22>10:00PM</option>
+               <option value=22 selected="selected">10:00PM</option>
             </select>
-            <a class="waves-effect waves-light btn"  onclick="showEvents()" id = "show-events">Show events</a>
-         <a class="waves-effect waves-light btn"  onclick="showClasses()" id = "show-classes">Show classes</a>
          </div>
       </div>
+            <div class="box">
+           <div class="course-event-button">
+            <a class="waves-effect waves-light btn"  onclick="showEvents()" id = "show-events">Show events</a>
+            <a class="waves-effect waves-light btn"  onclick="showClasses()" id = "show-classes">Show classes</a>
+         </div>
+           </div>
       <ul id="slide-out" class="side-nav">
       </ul>
       <!--don't show nav button-->
       <a href="#" data-activates="slide-out" class="button-collapse"></a>
       <div class="footer">
-        <div id="imgfooter">
-          <img src="https://raw.githubusercontent.com/77ahh/tutorial/master/Screen%20Shot%202017-03-14%20at%2017.49.45.png" width="406" height="45">
-          <p style="font-size:14px;">Total number of seats offered in all classes = capacity</p>
-           <div id = "credit" class="page-header">
+         <div id="imgfooter">
+            <img src="stylesheet/legend.png" width="406" height="65">
+            <div style="display:inline">(Capacity)</div>
          </div>
-        </div>
-         <div class="container">
-	         <div id="credit-text">
-	            <p class="page-header" style="font-size:20px;margin-top: 5%">Shiqi Wen swen8@ucsc.edu;&nbsp;&nbsp;&nbsp;Wei Wei wwei9@ucsc.edu;&nbsp;&nbsp;&nbsp;Hongyu Hua hohua@ucsc.edu
-	            </p>
-	         </div>
-         </div>
-
+            <div id="author">
+               <p>Created by: Shiqi Wen (swen8@ucsc.edu);&nbsp;&nbsp;&nbsp;
+                  Wei Wei (wwei9@ucsc.edu);&nbsp;&nbsp;&nbsp;(Hongyu Hua hohua@ucsc.edu) </p>
+            </div>
+            <div id="credits">
+               <p> Capacity = total number of seats offered in all classes</p>
+            </div>
       </div>
       <script src="script/location_data.js"></script>
       <script>
@@ -349,6 +355,12 @@
                    }
                  ]
              });
+                   var ee = document.getElementById("class-title");
+                   var ff = document.getElementById("events-title");
+                   ff.style.display = 'none';
+                   ee.style.display = 'block';
+                  getData('',7,22);
+                  createCircle(70);
 
                   var allowedBounds = new google.maps.LatLngBounds(
                     new google.maps.LatLng(36.946140, -122.090920),
@@ -376,25 +388,12 @@
 
 
                    showClasses= function(){
-                      clearMarkers();
-                      var a = document.getElementById("courses-variable");
-                      var b = document.getElementById("start-time");
-                      var c = document.getElementById("end-time");
-                      // var d = document.getElementById("legend");
-                      var e = document.getElementById("class-title")
-                      var f = document.getElementById("events-title")
-                      var g = document.getElementById("select_p1")
-                      var h = document.getElementById("select_p2")
-                      var i = document.getElementById("select_p3")
+                      clearMarkers();var a = document.getElementById("select");
+                      var e = document.getElementById("class-title");
+                      var f = document.getElementById("events-title");
                       a.style.display = 'block';
-                      b.style.display = 'block';
-                      c.style.display = 'block';
-                      // d.style.display = 'block';
-                      e.style.display = 'block';
                       f.style.display = 'none';
-                      g.style.display = 'block';
-                      h.style.display = 'block';
-                      i.style.display = 'block';
+                      e.style.display = 'block';
                       if(dataCleared) {
                           getData(dayValue, startTime, endTime);
                           if (map.getZoom() === 15) {
@@ -413,6 +412,7 @@
                          markerCleared=1;
                       }
                    };
+
 
                   var rectangle1 = new google.maps.Rectangle({
                    strokeColor: '#FF0000',
@@ -527,6 +527,7 @@
             });
 
             function createCircle(rr) {
+                 markerCleared = 1;
                  window.allCircles = [];
                  window.marginCircles= [];
                  for (var location in UCSC_locations) {
@@ -609,10 +610,10 @@
                          information: "Capacity in total: "+pp,
                          classes: cs,
                          index:location,
-//                         infowindow: new google.maps.InfoWindow({
-//                             content: JSON.stringify(pp),
-//                             position: UCSC_locations[location].center
-//                           })
+         //                         infowindow: new google.maps.InfoWindow({
+         //                             content: JSON.stringify(pp),
+         //                             position: UCSC_locations[location].center
+         //                           })
                      });
                      var marginCircle = new google.maps.Circle({
                          strokeColor: '#ffffff',
@@ -817,24 +818,12 @@
 
                            showEvents=function(){
                               if (markerCleared) {
-                                  var a = document.getElementById("courses-variable");
-                                  var b = document.getElementById("start-time");
-                                  var c = document.getElementById("end-time");
-                                  // var d = document.getElementById("legend");
-                                  var e = document.getElementById("class-title")
-                                  var f = document.getElementById("events-title")
-                                  var g = document.getElementById("select_p1")
-                                  var h = document.getElementById("select_p2")
-                                  var i = document.getElementById("select_p3")
+                                  var a = document.getElementById("select");
+                                  var e = document.getElementById("class-title");
+                                  var f = document.getElementById("events-title");
                                   a.style.display = 'none';
-                                  b.style.display = 'none';
-                                  c.style.display = 'none';
-                                  // d.style.display = 'none';
                                   e.style.display = 'none';
                                   f.style.display = 'block';
-                                  g.style.display = 'none';
-                                  h.style.display = 'none';
-                                  i.style.display = 'none';
                                   dataCleared = 1;
                                   markerCleared=0;
                                   creatMarker();
