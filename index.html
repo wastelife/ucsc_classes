@@ -14,26 +14,11 @@
          <h5><strong>What classes can we take at UCSC during our free time?</strong></h5>
          <h5><strong>What events can we attend at UCSC during our free time?</strong></h5>
          <h6 id="class-title">Start from Apr 3, Monday; End by June 15, Friday; 2017</h6>
-         <h6 id="events-title">All events during 2017</center></h6>
-         <p>You can use this vistualization to discover that yiou can take Beginning Tennis class from 9AM to 10AM on Tuesday or you can attend Graduate Research Symposium on May 12 on 1PM</center></p>
+         <h6 id="events-title">All events during 2017</h6>
+         <p>You can use this visualization to discover that you can take Beginning Tennis class from 9AM to 10AM on Tuesday or you can attend Graduate Research Symposium on May 12 on 1PM</center></p>
       </div>
       <div id="map"></div>
       <div id="controls" class="box">
-         <!-- <div id="legend">
-            <div class="color-key">
-               <span id="data-caret"> 7000</span>
-               <span id="data-caret00">|</span>
-               <span id="data-caret1">3300</span>
-               <span id="data-caret10">|</span>
-               <span id="data-caret2">1800</span>
-               <span id="data-caret20">|</span>
-               <span id="data-caret3">1000</span>
-               <span id="data-caret30">|</span>
-               <span id="data-caret4">500</span>
-               <span id="data-caret40">|</span>
-               <span id="data-caret6">100</span>
-            </div>
-         </div> -->
          <div class="select">
          	<p id="select_p1" style="text-align:left;">Select a day: </p>
             <select id="courses-variable" class="browser-default">
@@ -98,9 +83,7 @@
         </div>
          <div class="container">
 	         <div id="credit-text">
-	         <!-- </div> -->
-           <!-- <h5><center>Credits</center></h5> -->
-	            <p style="font-size:20px;">Shiqi Wen swen8@ucsc.edu;&nbsp;&nbsp;&nbsp;Wei Wei wwei9@ucsc.edu;&nbsp;&nbsp;&nbsp;Hongyu Hua hohua@ucsc.edu
+	            <p style="font-size:20px;margin-top: 5%">Shiqi Wen swen8@ucsc.edu;&nbsp;&nbsp;&nbsp;Wei Wei wwei9@ucsc.edu;&nbsp;&nbsp;&nbsp;Hongyu Hua hohua@ucsc.edu
 	            </p>
 	         </div>
          </div>
@@ -552,27 +535,33 @@
                       var cs =UCSC_locations[location].classes;
                    if(pp>0) {
                      if (pp<=100){
-                         color[0] = 113;
+                         color[0] = 10-10*pp/100;
                          color[1] = 100;
-                         color[2] = 55+20*pp/100;
-                         opacity= 0.3;
+                         color[2] =40;
+                         opacity= 0.6+0.1*pp/100;
+
+
                      }
                      else if (pp<=300){
-                         color[0] = 113-28*(pp-100)/200;
+                         color[0] = 15-5* (pp-100) /200;
                          color[1] = 100;
-                         color[2] = 75;
-                         opacity= 0.3;
+                         color[2] = 45 - 5 * (pp-100) /200;
+                         opacity= 0.5+0.1*(pp-100)/200;
+
+
                      }
                      else if (pp<=500){
-                         color[0] = 85-20*(pp-300)/200 ;
+                         color[0] = 25-10*(pp-300)/200;
                          color[1] = 100;
-                         color[2] = 75+5*(pp-300)/300;
-                         opacity= 0.3;
+                         color[2] = 45;
+                         opacity= 0.4+0.1*(pp-300)/200;
+
+
                      }
                      else if(pp<=1000){
-                         color[0] = 65-15*(pp-500)/500;
+                         color[0] = 35-10* (pp-500) /500;
                          color[1] = 100;
-                         color[2] = 80 - 5*(pp-500)/500;
+                         color[2] = 55-10*(pp-500)/500;
                          opacity= 0.4;
 
                      }
@@ -583,28 +572,28 @@
                          opacity= 0.4;
                      }
                      else if(pp<=2500){
-                         color[0] = 35-10* (pp-1500) /1000;
+                         color[0] = 65-15*(pp-1500)/1000;
                          color[1] = 100;
-                         color[2] = 55-10*(pp-1500)/1000;
+                         color[2] = 80 - 5*(pp-1500)/1000;
                          opacity= 0.4;
                      }
                      else if(pp<=3500){
-                         color[0] = 25-10*(pp-2500)/1000;
+                         color[0] = 85-20*(pp-2500)/1000 ;
                          color[1] = 100;
-                         color[2] = 45;
-                         opacity= 0.4+0.1*(pp-2500)/1000;
+                         color[2] = 75+5*(pp-2500)/1000;
+                         opacity= 0.3;
                      }
                      else if(pp<=5000){
-                         color[0] = 15-5* (pp-3500) /1500;
+                         color[0] = 113-28*(pp-3500)/2500;
                          color[1] = 100;
-                         color[2] = 45 - 5 * (pp-3500) /1500;
-                         opacity= 0.5+0.1*(pp-3500)/1500;
+                         color[2] = 75;
+                         opacity= 0.3;
                      }
                      else if(pp<=7000){
-                         color[0] = 10-10* (pp-5000) /2000;
+                         color[0] = 113;
                          color[1] = 100;
-                         color[2] =40;
-                         opacity= 0.6+0.1*(pp-5000)/2000;
+                         color[2] = 55+20*(pp-5000)/2000;
+                         opacity= 0.3;
                      }
 
                      color = 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)';
@@ -660,9 +649,6 @@
                            currentDiv.appendChild(totalDiv);
                        for(var ii in this.classes){
                            var cc= this.classes[ii];
-                           cc['Subject']= "Subject: " +cc['Subject'];
-                           cc['Class number']= "Class number: " +cc['Class number'];
-                           cc['Capacity']= "Capacity: "+ cc['Capacity'];
                            var subjectDiv= document.createElement("li");
                            subjectDiv.style.cssText = 'margin-top:1.2em;line-height: 1.4em;color:#3399ff;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var classNumberDiv= document.createElement("li");
@@ -675,11 +661,11 @@
                            capacityDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
                            var locationDiv= document.createElement("li");
                            locationDiv.style.cssText = 'margin-top:0;line-height: 1.5em;font-size:1em;font-family: "Roboto", "Arial", sans-serif;';
-                           var subjectText = document.createTextNode(cc['Subject']);
-                           var classNumberText = document.createTextNode(cc['Class number']);
+                           var subjectText = document.createTextNode("Subject: " + cc['Subject']);
+                           var classNumberText = document.createTextNode("Class number: "+cc['Class number']);
                            var classNameText = document.createTextNode(cc['Class name']);
                            var dayAndTimeText = document.createTextNode(cc['Day and time']);
-                           var capacityText = document.createTextNode(cc['Capacity']);
+                           var capacityText = document.createTextNode("Capacity: "+ cc['Capacity']);
                            var locationText = document.createTextNode(cc['Location']);
 
                            subjectDiv.appendChild(subjectText);
@@ -790,7 +776,7 @@
          }
 
                     getData = function(a,b,c){
-                    $.getJSON("data/data.json", function (classElement) {
+                    $.getJSON("data/data11111111.json", function (classElement) {
                         $.each(classElement, function (key, val) {
                             if (val.Day_And_Time.search(a) != -1 && val.starttime>=b && val.endtime<=c){
                                 for (var location in UCSC_locations) {
